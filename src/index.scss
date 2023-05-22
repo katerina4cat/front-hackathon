@@ -1,10 +1,14 @@
-@font-face{
+@font-face {
   font-family: "AlterAves";
   src: url("./Assets/Fonts/AlterAves.otf");
 }
-@font-face{
+@font-face {
   font-family: "GT-Walsheim";
   src: url("./Assets/Fonts/GT-Walsheim.otf");
+}
+@font-face {
+  font-family: "GT-Walsheim-Light";
+  src: url("./Assets/Fonts/GT-Walsheim-Light.otf");
 }
 
 body {
@@ -13,16 +17,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html{
+html {
   --second-font: "GT-Walsheim";
   --first-font: "AlterAves";
-  
+  --three-font: "GT-Walsheim-Light";
+
   --first-color: #2a2639;
   --second-color: #d03650;
   --header-font-color: #fff;
+  --header-buttons-color: #fff;
 }
 
-html[data-theme="light"]{
+html[data-theme="light"] {
   --header-moscow-background: var(--first-color);
   --header-buttons-background: var(--second-color);
+  --footer-base-background: var(--first-color);
+  --footer-info-background: #000;
+  --footer-text-color: #fff;
 }

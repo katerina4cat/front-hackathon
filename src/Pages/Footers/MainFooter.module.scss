@@ -1,0 +1,56 @@
+.MainFooter {
+  height: auto;
+  background-color: var(--footer-base-background);
+  width: 100%;
+  position: relative;
+
+  .Buttons {
+    padding: 0.5em;
+    .Table {
+      margin: auto;
+      display: table;
+      width: 75%;
+      .Row {
+        display: table-row;
+        margin: auto;
+        .Cell {
+          padding: 0.5em;
+          display: table-cell;
+          width: 33.33%;
+          color: var(--footer-text-color);
+          font-family: var(--three-font);
+          font-size: 0.25em;
+        }
+      }
+    }
+  }
+
+  .Info {
+    height: 1.5em;
+    background-color: var(--footer-info-background);
+    .Embleme {
+      position: relative;
+      display: inline-block;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0.25em;
+      height: 1em;
+    }
+    .Contacts {
+      display: inline-block;
+      font-family: var(--three-font);
+      font-size: 0.25em;
+      color: var(--footer-text-color);
+      margin-left: 10em;
+    }
+  }
+}
+
+@keyframes rotete {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

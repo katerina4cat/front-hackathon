@@ -1,0 +1,27 @@
+.RegisterBody {
+  height: 10em;
+  display: table;
+  width: 100%;
+  .TableRow {
+    display: table-row;
+    .UserFields {
+      display: table-cell;
+      padding-left: 0.5em;
+      width: 50%;
+      height: 100%;
+      .Title {
+        font-family: var(--first-font);
+        font-size: 0.5em;
+        text-align: left;
+      }
+    }
+    .TitleBanner {
+      display: table-cell;
+      position: fixed;
+      width: 50%;
+      height: 100%;
+      background-image: url("../../Assets/Pictures/back.svg");
+      font-family: var(--first-font);
+    }
+  }
+}

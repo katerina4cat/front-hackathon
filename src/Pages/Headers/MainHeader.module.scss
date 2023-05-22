@@ -1,53 +1,121 @@
-.MainHeader{
-    font-family: var(--first-font);
-    height: auto;
-    width: 100%;
+.MainHeader {
+  font-family: var(--first-font);
+  height: auto;
+  width: 100%;
 
-    .MoscowHeader{
-        background-color: var(--header-moscow-background);
-        height: 7em;
+  .MoscowHeader {
+    background-color: var(--header-moscow-background);
+    height: 1.75em;
+    position: relative;
+    .GlobalTitle {
+      display: inline-block;
+      height: 100%;
+      width: max-content;
+      position: absolute;
+      left: 0;
+      .Embleme {
         position: relative;
-        .GlobalTitle{
-            height: 100%;
-            width: max-content;
-            .Embleme{
-                position: relative;
-                display: inline-block;
-                margin-left: 1em;
-                margin-right: auto;
-                height: 65%;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-            .Title{
-                display: inline-block;
-                height: max-content;
-                max-width: 100%;
-                position: relative;
-                margin-left: 1em;
-                font-family: var(--first-font);
-                color: var(--header-font-color);
-                font-size: 200%;
-                text-align: center;
-                transform: translateY(-25%);
-            }
-        }
+        display: inline-block;
+        margin-left: 0.25em;
+        margin-right: auto;
+        height: 75%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .Title {
+        display: inline-block;
+        height: max-content;
+        position: relative;
+        margin-left: 0.5em;
+        font-family: var(--first-font);
+        color: var(--header-font-color);
+        font-size: 0.75em;
+        text-align: center;
+        transform: translateY(-25%);
+      }
     }
 
-    .ButtonsHeader{
-        position: relative;
-        background-color: var(--header-buttons-background);
-        height: 6em;
-        justify-items: center;
-        .BurgerIcon{
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 1em;
-            display: inline-table;
-            vertical-align: middle;
-            width: 3em;
-            fill: #fff;
+    .AuthSearch {
+      position: absolute;
+      right: 0.25em;
+      display: inline-block;
+      height: 100%;
+      .SearchIcon {
+        display: inline-block;
+        height: 1.5em;
+        width: 1.5em;
+        .Search {
+          transform: translateY(0.1em);
+          height: 0.5em;
+          width: 0.5em;
+          fill: #fff;
+          animation: 0.5s ease-in 0.5s rotete infinite;
         }
+      }
+      .AuthButton {
+        font-size: 0.5em;
+        display: inline-block;
+        font-family: var(--second-font);
+        color: var(--header-font-color);
+      }
     }
+  }
+
+  .ButtonsHeader {
+    position: relative;
+    background-color: var(--header-buttons-background);
+    height: 1.25em;
+    .ButtonsLineFrame {
+      display: block;
+      width: max-content;
+      position: absolute;
+      left: 0.25em;
+
+      .BurgerFrame {
+        height: 100%;
+        display: inline-block;
+        margin-right: 1em;
+        .Burger {
+          display: inline-block;
+          transform: translateY(-40%);
+          height: 0.5em;
+          width: 0.5em;
+          fill: #fff;
+        }
+      }
+
+      .ButtonLine {
+        color: var(--header-buttons-color);
+        font-family: var(--second-font);
+        font-size: 0.4em;
+        display: inline-block;
+        position: relative;
+        padding-left: 2em;
+        padding-right: 2em;
+        width: max-content;
+        vertical-align: super;
+      }
+
+      .BellFrame {
+        height: 100%;
+        display: inline-block;
+        left: 0.25em;
+        .Bell {
+          display: inline-block;
+          transform: translateY(-40%);
+          height: 0.5em;
+          fill: #fff;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotete {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
