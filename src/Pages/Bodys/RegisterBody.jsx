@@ -1,5 +1,6 @@
 import React from "react";
 import cl from "./RegisterBody.module.scss";
+import Input from "../../Elements/Input/Input";
 
 function RegisterBody() {
   return (
@@ -7,6 +8,8 @@ function RegisterBody() {
       <div className={cl.TableRow}>
         <div className={cl.UserFields}>
           <div className={cl.Title}>Регистрация пользователя</div>
+          <div className={cl.EmailTitle}>Почта</div>
+          <Input />
         </div>
         <div className={cl.TitleBanner}>
           TВОЙ ГОРОД

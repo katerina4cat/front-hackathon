@@ -5,7 +5,7 @@
 
   .MoscowHeader {
     background-color: var(--header-moscow-background);
-    height: 1.75em;
+    height: 4.5em;
     position: relative;
     .GlobalTitle {
       display: inline-block;
@@ -29,31 +29,31 @@
         margin-left: 0.5em;
         font-family: var(--first-font);
         color: var(--header-font-color);
-        font-size: 0.75em;
+        font-size: 2em;
         text-align: center;
         transform: translateY(-25%);
       }
     }
 
     .AuthSearch {
+      top: 50%;
+      transform: translateY(-50%);
       position: absolute;
       right: 0.25em;
       display: inline-block;
-      height: 100%;
+      height: auto;
       .SearchIcon {
         display: inline-block;
-        height: 1.5em;
-        width: 1.5em;
+        height: 3em;
+        width: 3em;
         .Search {
-          transform: translateY(0.1em);
-          height: 0.5em;
-          width: 0.5em;
+          height: 75%;
           fill: #fff;
           animation: 0.5s ease-in 0.5s rotete infinite;
         }
       }
       .AuthButton {
-        font-size: 0.5em;
+        font-size: 2em;
         display: inline-block;
         font-family: var(--second-font);
         color: var(--header-font-color);
@@ -64,46 +64,50 @@
   .ButtonsHeader {
     position: relative;
     background-color: var(--header-buttons-background);
-    height: 1.25em;
+    height: 3em;
     .ButtonsLineFrame {
       display: block;
       width: max-content;
-      position: absolute;
-      left: 0.25em;
+      height: 100%;
 
       .BurgerFrame {
         height: 100%;
         display: inline-block;
-        margin-right: 1em;
+        margin-right: 1%;
+        position: relative;
         .Burger {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
           display: inline-block;
-          transform: translateY(-40%);
-          height: 0.5em;
-          width: 0.5em;
+          height: 1.5em;
+          width: 1.5em;
           fill: #fff;
         }
       }
-
-      .ButtonLine {
-        color: var(--header-buttons-color);
-        font-family: var(--second-font);
-        font-size: 0.4em;
-        display: inline-block;
-        position: relative;
-        padding-left: 2em;
-        padding-right: 2em;
-        width: max-content;
-        vertical-align: super;
+      .ButtonsInline {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10%;
+        .ButtonLine {
+          color: var(--header-buttons-color);
+          font-family: var(--second-font);
+          font-size: 1.25em;
+          display: inline;
+          padding-left: 10%;
+          padding-right: 10%;
+          vertical-align: super;
+        }
       }
-
       .BellFrame {
         height: 100%;
-        display: inline-block;
-        left: 0.25em;
+        display: inline;
+        width: 2em;
         .Bell {
-          display: inline-block;
-          transform: translateY(-40%);
-          height: 0.5em;
+          display: block;
+          height: 1.5em;
+          width: 1.5em;
           fill: #fff;
         }
       }

@@ -1,0 +1,28 @@
+.Input {
+  display: table;
+  margin: 5px;
+  border: 1px solid rgb(110, 110, 110);
+  .InputText {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 80%;
+    height: auto;
+  }
+  .CrossIcon {
+    display: inline;
+    width: 18%;
+    margin: auto;
+    animation: 0.01s linear 0.01s rotete infinite;
+  }
+}
+
+@keyframes rotete {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

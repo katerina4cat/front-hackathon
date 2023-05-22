@@ -19,7 +19,7 @@ function MainHeader({ setBurger, setNotify, setSearch }) {
             className={cl.Embleme}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Coat_of_Arms_of_Moscow.svg/300px-Coat_of_Arms_of_Moscow.svg.png"
           />
-          <div className={cl.Title}>Правительство москвы</div>
+          <div className={cl.Title}>Правительство Москвы</div>
         </div>
         <div className={cl.AuthSearch}>
           <div
@@ -46,10 +46,11 @@ function MainHeader({ setBurger, setNotify, setSearch }) {
           >
             <BurgerIcon className={cl.Burger} />
           </div>
-
-          {buttonsLine.map((buttonLine) => (
-            <div className={cl.ButtonLine}>{buttonLine.title}</div>
-          ))}
+          <div className={cl.ButtonsInline}>
+            {buttonsLine.map((buttonLine) => (
+              <div className={cl.ButtonLine}>{buttonLine.title}</div>
+            ))}
+          </div>
           <div
             className={cl.BellFrame}
             onClick={(e) => {

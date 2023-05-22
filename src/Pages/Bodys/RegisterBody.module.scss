@@ -1,5 +1,5 @@
 .RegisterBody {
-  height: 10em;
+  height: 100%;
   display: table;
   width: 100%;
   .TableRow {
@@ -14,10 +14,14 @@
         font-size: 0.5em;
         text-align: left;
       }
+      .EmailTitle {
+        font-family: var(--three-font);
+        font-size: 0.25em;
+        text-align: left;
+      }
     }
     .TitleBanner {
       display: table-cell;
-      position: fixed;
       width: 50%;
       height: 100%;
       background-image: url("../../Assets/Pictures/back.svg");

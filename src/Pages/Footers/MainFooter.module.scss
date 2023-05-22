@@ -2,14 +2,13 @@
   height: auto;
   background-color: var(--footer-base-background);
   width: 100%;
-  position: relative;
 
   .Buttons {
     padding: 0.5em;
     .Table {
       margin: auto;
       display: table;
-      width: 75%;
+      width: 40%;
       .Row {
         display: table-row;
         margin: auto;
@@ -19,14 +18,14 @@
           width: 33.33%;
           color: var(--footer-text-color);
           font-family: var(--three-font);
-          font-size: 0.25em;
+          font-size: 1em;
         }
       }
     }
   }
 
   .Info {
-    height: 1.5em;
+    height: 3em;
     background-color: var(--footer-info-background);
     .Embleme {
       position: relative;
@@ -34,14 +33,14 @@
       top: 50%;
       transform: translateY(-50%);
       left: 0.25em;
-      height: 1em;
+      height: 2.5em;
     }
     .Contacts {
       display: inline-block;
       font-family: var(--three-font);
-      font-size: 0.25em;
+      font-size: 1em;
       color: var(--footer-text-color);
-      margin-left: 10em;
+      margin-left: 20em;
     }
   }
 }
