@@ -1,0 +1,53 @@
+.MainHeader{
+    font-family: var(--first-font);
+    height: auto;
+    width: 100%;
+
+    .MoscowHeader{
+        background-color: var(--header-moscow-background);
+        height: 7em;
+        position: relative;
+        .GlobalTitle{
+            height: 100%;
+            width: max-content;
+            .Embleme{
+                position: relative;
+                display: inline-block;
+                margin-left: 1em;
+                margin-right: auto;
+                height: 65%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .Title{
+                display: inline-block;
+                height: max-content;
+                max-width: 100%;
+                position: relative;
+                margin-left: 1em;
+                font-family: var(--first-font);
+                color: var(--header-font-color);
+                font-size: 200%;
+                text-align: center;
+                transform: translateY(-25%);
+            }
+        }
+    }
+
+    .ButtonsHeader{
+        position: relative;
+        background-color: var(--header-buttons-background);
+        height: 6em;
+        justify-items: center;
+        .BurgerIcon{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1em;
+            display: inline-table;
+            vertical-align: middle;
+            width: 3em;
+            fill: #fff;
+        }
+    }
+}
