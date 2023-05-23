@@ -39,21 +39,28 @@
       top: 50%;
       transform: translateY(-50%);
       position: absolute;
-      right: 0.25em;
+      right: 1em;
       display: inline-block;
-      height: auto;
+      height: 2.5em;
       .SearchIcon {
         display: inline-block;
-        height: 3em;
-        width: 3em;
+        height: 100%;
+        width: 2.5em;
+        margin-right: 0.5em;
         .Search {
-          height: 75%;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 1.5em;
+          width: 1.5em;
           fill: #fff;
           animation: 0.5s ease-in 0.5s rotete infinite;
         }
       }
       .AuthButton {
-        font-size: 2em;
+        vertical-align: sub;
+        height: 100%;
+        font-size: 1.75em;
         display: inline-block;
         font-family: var(--second-font);
         color: var(--header-font-color);
@@ -62,42 +69,39 @@
   }
 
   .ButtonsHeader {
-    position: relative;
     background-color: var(--header-buttons-background);
     height: 3em;
-    .ButtonsLineFrame {
-      display: block;
+    .ButtonsLineFrame{
       width: max-content;
-      height: 100%;
-
+      white-space: nowrap;
+      position: relative;
+      top: 40%;
+      transform: translateY(-50%);
       .BurgerFrame {
-        height: 100%;
-        display: inline-block;
-        margin-right: 1%;
-        position: relative;
+        height: 2em;
+        display: inline;
+        width: 2em;
+        margin-right: 15%;
+        margin-left: 1em;
         .Burger {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          display: inline-block;
+          position: relative;
+          transform: translateY(27%);
           height: 1.5em;
           width: 1.5em;
           fill: #fff;
         }
       }
       .ButtonsInline {
-        position: absolute;
+        display: inline;
         top: 50%;
         transform: translateY(-50%);
-        left: 10%;
+        width: max-content;
         .ButtonLine {
           color: var(--header-buttons-color);
           font-family: var(--second-font);
           font-size: 1.25em;
           display: inline;
-          padding-left: 10%;
-          padding-right: 10%;
-          vertical-align: super;
+          padding-right: 3em;
         }
       }
       .BellFrame {
@@ -105,21 +109,13 @@
         display: inline;
         width: 2em;
         .Bell {
-          display: block;
+          position: relative;
+          transform: translateY(27%);
           height: 1.5em;
           width: 1.5em;
           fill: #fff;
         }
       }
     }
-  }
-}
-
-@keyframes rotete {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }
