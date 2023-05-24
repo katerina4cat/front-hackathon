@@ -2,6 +2,7 @@
   font-family: var(--first-font);
   height: auto;
   width: 100%;
+  user-select: none;
 
   .MoscowHeader {
     background-color: var(--header-moscow-background);
@@ -71,7 +72,7 @@
   .ButtonsHeader {
     background-color: var(--header-buttons-background);
     height: 3em;
-    .ButtonsLineFrame{
+    .ButtonsLineFrame {
       width: max-content;
       white-space: nowrap;
       position: relative;

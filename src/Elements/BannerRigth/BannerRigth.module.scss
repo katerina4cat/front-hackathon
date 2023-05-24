@@ -1,0 +1,22 @@
+.BannerRigth {
+  width: 50%;
+  align-self: stretch;
+  font-size: 7vw;
+  font-family: var(--first-font);
+  color: var(--title-city-color);
+  background: url("../../Assets/Pictures/back.svg") no-repeat;
+  background-size: cover;
+  user-select: none;
+  .TitleText {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    .TitleBannerLine {
+      width: 1em;
+      height: 0.1em;
+      margin: auto;
+      margin-bottom: 0.1em;
+      background-color: var(--title-city-color);
+    }
+  }
+}

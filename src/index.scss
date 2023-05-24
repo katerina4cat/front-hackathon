@@ -22,8 +22,11 @@ html {
   --first-font: "AlterAves";
   --three-font: "GT-Walsheim-Light";
 
+  --first-border-radius: 12px;
+
   --first-color: #2a2639;
   --second-color: #d03650;
+  --three-color: #696772;
   --header-font-color: #fff;
   --header-buttons-color: #fff;
 }
@@ -34,4 +37,10 @@ html[data-theme="light"] {
   --footer-base-background: var(--first-color);
   --footer-info-background: #000;
   --footer-text-color: #fff;
+  --active-button-background: var(--second-color);
+  --active-button-color: #fff;
+  --inactive-button-background: var(--three-color);
+  --inactive-button-color: #fff;
+  --title-city-color: #fff;
+  --border-info-brick: var(--second-color);
 }

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import cl from "./Register.module.scss";
 import MainHeader from "../Headers/MainHeader";
-import RegisterBody from "../Bodys/RegisterBody";
+import RegisterBody from "../Bodys/Register/RegisterBody";
 import MainFooter from "../Footers/MainFooter";
 
 function Register() {
@@ -9,7 +8,7 @@ function Register() {
   const [notify, setNotify] = useState(false);
   const [search, setSearch] = useState(false);
   return (
-    <div className={cl.Register}>
+    <div>
       <MainHeader
         setBurger={setBurger}
         setNotify={setNotify}
