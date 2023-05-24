@@ -3,8 +3,9 @@ import cl from "./LoginBody.module.scss";
 import BannerRigth from "../../../Elements/BannerRigth/BannerRigth";
 import Input from "../../../Elements/Input/Input";
 import Button from "../../../Elements/Button/Button";
+import UserData from "../../Pages/UserData";
 
-function LoginBody() {
+function LoginBody(props) {
   const [Login, setLogin] = useState("");
   const [Password, setPassword] = useState("");
   const [ErrorInfo, setErrorInfo] = useState(undefined);
@@ -14,6 +15,7 @@ function LoginBody() {
     else if (!Login) setErrorInfo("Вы не указали логин!");
     else if (!Password) setErrorInfo("Вы не указали пароль!");
     else setErrorInfo(undefined);
+    props.setPage(<UserData setPage={props.setPage} />);
     alert("Auth");
   };
   const restorePassword = () => {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.15 23.63">
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+    </style>
+      <circle class="cls-1" cx="10.59" cy="6.92" r="6"/>
+      <path class="cls-1" d="m.92,23.54c.48-4.95,4.68-8.78,9.64-8.79,4.93-.01,9.13,3.74,9.67,8.66"/>
+</svg>

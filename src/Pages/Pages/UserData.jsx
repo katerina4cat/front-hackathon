@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import MainHeader from "../Headers/MainHeader";
 import MainFooter from "../Footers/MainFooter";
-import LoginBody from "../Bodys/Login/LoginBody";
-import Register from "./Register";
+import AccountIcon from "../../Elements/AccountIcon/AccountIcon";
+import UserDataBody from "../Bodys/UserData/UserDataBody";
 
-function Login(props) {
+function UserData(props) {
   const [burger, setBurger] = useState(false);
   const [notify, setNotify] = useState(false);
   const [search, setSearch] = useState(false);
@@ -16,16 +16,12 @@ function Login(props) {
         setSearch={setSearch}
         setPage={props.setPage}
       >
-        <div
-          onClick={() => props.setPage(<Register setPage={props.setPage} />)}
-        >
-          Регистрация
-        </div>
+        <AccountIcon />
       </MainHeader>
-      <LoginBody setPage={props.setPage} />
+      <UserDataBody />
       <MainFooter />
     </div>
   );
 }
 
-export default Login;
+export default UserData;
