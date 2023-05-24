@@ -8,15 +8,15 @@
     background-color: var(--header-moscow-background);
     height: 4.5em;
     position: relative;
+    display: flex;
     .GlobalTitle {
-      display: inline-block;
+      display: flex;
       height: 100%;
       width: max-content;
       position: absolute;
       left: 0;
       .Embleme {
         position: relative;
-        display: inline-block;
         margin-left: 0.25em;
         margin-right: auto;
         height: 75%;
@@ -24,27 +24,28 @@
         transform: translateY(-50%);
       }
       .Title {
-        display: inline-block;
         height: max-content;
         position: relative;
         margin-left: 0.5em;
         font-family: var(--first-font);
         color: var(--header-font-color);
-        font-size: 2em;
-        text-align: center;
-        transform: translateY(-25%);
+        font-size: 1.5em;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 
     .AuthSearch {
+      height: 2.5em;
+      position: relative;
       top: 50%;
       transform: translateY(-50%);
-      position: absolute;
-      right: 1em;
-      display: inline-block;
-      height: 2.5em;
+      margin-left: auto;
+      margin-right: 1em;
+      width: max-content;
+      display: flex;
+      align-items: center;
       .SearchIcon {
-        display: inline-block;
         height: 100%;
         width: 2.5em;
         margin-right: 0.5em;
@@ -59,12 +60,13 @@
         }
       }
       .AuthButton {
-        vertical-align: sub;
-        height: 100%;
-        font-size: 1.75em;
-        display: inline-block;
-        font-family: var(--second-font);
-        color: var(--header-font-color);
+        div {
+          vertical-align: sub;
+          height: 100%;
+          font-size: 1.5em;
+          font-family: var(--second-font);
+          color: var(--header-font-color);
+        }
       }
     }
   }

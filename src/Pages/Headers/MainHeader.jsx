@@ -4,7 +4,7 @@ import { ReactComponent as BurgerIcon } from "../../Assets/Icons/burgerDot.svg";
 import { ReactComponent as BellIcon } from "../../Assets/Icons/bell.svg";
 import { ReactComponent as SearchIcon } from "../../Assets/Icons/search.svg";
 
-function MainHeader({ setBurger, setNotify, setSearch }) {
+function MainHeader({ setBurger, setNotify, setSearch, children }) {
   const buttonsLine = [
     { title: "Главная" },
     { title: "События" },
@@ -31,7 +31,7 @@ function MainHeader({ setBurger, setNotify, setSearch }) {
           >
             <SearchIcon className={cl.Search} />
           </div>
-          <div className={cl.AuthButton}>Войти</div>
+          <div className={cl.AuthButton}>{children}</div>
         </div>
       </div>
 
