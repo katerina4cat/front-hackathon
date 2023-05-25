@@ -46,3 +46,11 @@ html[data-theme="light"] {
   --profile-icon-background: var(--three-color);
   --profile-icon-color: #fff;
 }
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100vw;
+}

@@ -21,18 +21,16 @@ function MainFooter() {
         </div>
       </div>
       <div className={cl.Info}>
-        <div style={{ width: "max-content", height: "100%" }}>
-          <img
-            className={cl.Embleme}
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Coat_of_Arms_of_Moscow.svg/300px-Coat_of_Arms_of_Moscow.svg.png"
-          />
-          <div className={cl.Contacts}>
-            8(801)555-35-35
-            <br />
-            8(801)555-35-35
-          </div>
-          <div className={cl.Contacts}>katerina4cat@gmail.com</div>
+        <img
+          className={cl.Embleme}
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Coat_of_Arms_of_Moscow.svg/300px-Coat_of_Arms_of_Moscow.svg.png"
+        />
+        <div className={cl.Contacts}>
+          8(801)555-35-35
+          <br />
+          8(801)555-35-35
         </div>
+        <div className={cl.Contacts}>katerina4cat@gmail.com</div>
       </div>
     </div>
   );

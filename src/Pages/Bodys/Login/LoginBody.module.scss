@@ -1,12 +1,11 @@
 .LoginBody {
-  min-height: 75vh;
   width: 100%;
+  flex-grow: 1;
   display: flex;
   .LeftBlock {
     width: 50%;
     display: flex;
     font-family: var(--three-font);
-    height: max-content;
     .UserFields {
       text-align: start;
       padding-left: 1.5em;
@@ -15,20 +14,33 @@
       .Title {
         font-family: var(--first-font);
         font-size: 1.75em;
+        @media screen and (max-width: 780px) {
+          font-size: 1.5em;
+        }
         text-align: left;
       }
       .FieldTitle {
         font-family: var(--three-font);
         margin-top: 0.5em;
         font-size: 1.5em;
+        @media screen and (max-width: 780px) {
+          font-size: 1em;
+        }
         text-align: left;
       }
       .Input {
         width: 100%;
+        @media screen and (max-width: 780px) {
+          font-size: 0.7em;
+          width: 125%;
+        }
       }
       .RememberPassword {
         color: rgba($color: #000, $alpha: 0.5);
         font-size: 1.1em;
+        @media screen and (max-width: 780px) {
+          font-size: 0.75em;
+        }
         margin-left: 1.5em;
         margin-bottom: 0.75em;
         width: max-content;
@@ -38,6 +50,10 @@
         width: 75%;
         font-size: 1.1em;
         margin-bottom: 2em;
+        @media screen and (max-width: 780px) {
+          font-size: 0.9em;
+          width: 125%;
+        }
       }
     }
     .InfoBrick {

@@ -6,6 +6,7 @@
   transition: background 0.4s ease-in-out;
   .InputText {
     text-indent: 0.5em;
+    min-width: 0;
     flex-grow: 1;
     display: inline;
     padding: 0;
@@ -25,6 +26,9 @@
     cursor: pointer;
     display: inline;
     height: 1.25em;
+    @media screen and (max-width: 780px) {
+      height: 2em;
+    }
     padding-left: 0.25em;
     padding-right: 0.5em;
     margin: auto;

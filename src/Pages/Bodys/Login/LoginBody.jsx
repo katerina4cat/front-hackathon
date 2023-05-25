@@ -3,19 +3,19 @@ import cl from "./LoginBody.module.scss";
 import BannerRigth from "../../../Elements/BannerRigth/BannerRigth";
 import Input from "../../../Elements/Input/Input";
 import Button from "../../../Elements/Button/Button";
-import UserData from "../../Pages/UserData";
+import UserDataBody from "../UserData/UserDataBody";
 
 function LoginBody(props) {
-  const [Login, setLogin] = useState("");
+  const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [ErrorInfo, setErrorInfo] = useState(undefined);
 
   const authEvent = () => {
-    if (!Login & !Password) setErrorInfo("Вы не указали логин и пароль!");
-    else if (!Login) setErrorInfo("Вы не указали логин!");
+    if (!Email & !Password) setErrorInfo("Вы не указали логин и пароль!");
+    else if (!Email) setErrorInfo("Вы не указали логин!");
     else if (!Password) setErrorInfo("Вы не указали пароль!");
     else setErrorInfo(undefined);
-    props.setPage(<UserData setPage={props.setPage} />);
+    props.setPage(<UserDataBody setPage={props.setPage} />);
     alert("Auth");
   };
   const restorePassword = () => {
@@ -31,7 +31,7 @@ function LoginBody(props) {
           <Input
             placeholder="ФИО или почта"
             className={cl.Input}
-            vals={[Login, setLogin]}
+            vals={[Email, setEmail]}
           />
           <div className={cl.FieldTitle}>Пароль</div>
           <Input

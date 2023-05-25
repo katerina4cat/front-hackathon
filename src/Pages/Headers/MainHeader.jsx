@@ -3,14 +3,21 @@ import cl from "./MainHeader.module.scss";
 import { ReactComponent as BurgerIcon } from "../../Assets/Icons/burgerDot.svg";
 import { ReactComponent as BellIcon } from "../../Assets/Icons/bell.svg";
 import { ReactComponent as SearchIcon } from "../../Assets/Icons/search.svg";
+import ToRegister from "./HeaderButtons/ToRegister";
+import ToUserData from "./HeaderButtons/ToUserData";
+import ToLogin from "./HeaderButtons/ToLogin";
 
-function MainHeader({ setBurger, setNotify, setSearch, children }) {
+function MainHeader({ setBurger, setNotify, setSearch, setPage, currentPage }) {
   const buttonsLine = [
     { title: "Главная" },
     { title: "События" },
     { title: "Новости" },
     { title: "Стажировки" },
   ];
+  const ButtonAuths = {
+    RegisterBody: <ToLogin setPage={setPage} />,
+    LoginBody: <ToRegister setPage={setPage} />,
+  };
   return (
     <div className={cl.MainHeader}>
       <div className={cl.MoscowHeader}>
@@ -31,7 +38,13 @@ function MainHeader({ setBurger, setNotify, setSearch, children }) {
           >
             <SearchIcon className={cl.Search} />
           </div>
-          <div className={cl.AuthButton}>{children}</div>
+          <div className={cl.AuthButton}>
+            {ButtonAuths[currentPage] ? (
+              ButtonAuths[currentPage]
+            ) : (
+              <ToUserData setPage={setPage} />
+            )}
+          </div>
         </div>
       </div>
 
@@ -46,11 +59,9 @@ function MainHeader({ setBurger, setNotify, setSearch, children }) {
           >
             <BurgerIcon className={cl.Burger} />
           </div>
-          <div className={cl.ButtonsInline}>
-            {buttonsLine.map((buttonLine) => (
-              <div className={cl.ButtonLine}>{buttonLine.title}</div>
-            ))}
-          </div>
+          {buttonsLine.map((buttonLine) => (
+            <div className={cl.ButtonLine}>{buttonLine.title}</div>
+          ))}
           <div
             className={cl.BellFrame}
             onClick={(e) => {

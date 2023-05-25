@@ -27,20 +27,23 @@
   .Info {
     height: 3em;
     background-color: var(--footer-info-background);
+    display: flex;
     .Embleme {
       position: relative;
-      display: inline-block;
       top: 50%;
       transform: translateY(-50%);
       left: 0.25em;
       height: 2.5em;
+      width: 2.11em;
     }
     .Contacts {
-      display: inline-block;
       font-family: var(--three-font);
       font-size: 1em;
+      @media screen and (max-width: 780px) {
+        font-size: 75%;
+      }
       color: var(--footer-text-color);
-      margin-left: 10vw;
+      margin-left: 5%;
     }
   }
 }
