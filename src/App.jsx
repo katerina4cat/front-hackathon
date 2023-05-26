@@ -3,6 +3,7 @@ import style from "./App.module.scss";
 import RegisterBody from "./Pages/Bodys/Register/RegisterBody";
 import MainHeader from "./Pages/Headers/MainHeader";
 import MainFooter from "./Pages/Footers/MainFooter";
+import VacancyCreate from "./Pages/Bodys/VacancyCreate/VacancyCreate";
 
 function App() {
   document.documentElement.setAttribute("data-theme", "light");
@@ -12,7 +13,7 @@ function App() {
   const [notify, setNotify] = useState(false);
   const [search, setSearch] = useState(false);
 
-  useEffect(() => setPage(<RegisterBody setPage={setPage} />), [1]);
+  useEffect(() => setPage(<VacancyCreate setPage={setPage} />), [1]);
 
   return (
     <div className={style.App}>

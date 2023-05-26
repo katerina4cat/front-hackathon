@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import cl from "./UserDataBody.module.scss";
+import cl from "./VacancyCreate.module.scss";
 import EditInput from "../../../Elements/Input/EditInput";
 import DateInformer from "../../../Elements/DateInformer/DateInformer";
 import ProjectEdit from "../../../Elements/ProjectEdit/ProjectEdit";
 import ImageChose from "../../../Elements/ImageChose/ImageChose";
 import { ReactComponent as PlusIcon } from "../../../Assets/Icons/plus.svg";
+import Select from "../../../Elements/Select/Select";
 
-function UserDataBody(props) {
+function VacancyCreate(props) {
   const Name = useState("");
-  const SurName = useState("");
-  const LastName = useState("");
+  const Salary = useState("");
+  const Direction = useState("");
+  const Specialization = useState("");
 
-  const Country = useState("");
   const Area = useState("");
   const Street = useState("");
   const House = useState("");
@@ -35,18 +36,18 @@ function UserDataBody(props) {
       <div className={cl.UserFields}>
         <div className={cl.AccountInfo}>
           <div>
-            <div className={cl.Title}>Личная информация:</div>
-            <EditInput placeholder="Имя" vals={Name} className={cl.Input} />
+            <div className={cl.Title}>Информация:</div>
             <EditInput
-              placeholder="Фамилия"
-              vals={SurName}
+              placeholder="Название"
+              vals={Name}
               className={cl.Input}
             />
             <EditInput
-              placeholder="Отчество"
-              vals={LastName}
+              placeholder="Заработная плата"
+              vals={Salary}
               className={cl.Input}
             />
+            <Select values={["Раз", "Два", "nhb"]} />
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
               Дата регистрации:
             </div>
@@ -56,11 +57,7 @@ function UserDataBody(props) {
         </div>
         <div className={cl.Title}>Адресная информация:</div>
         <div className={cl.InlineInputs}>
-          <EditInput
-            placeholder="Адм. округ"
-            vals={Country}
-            className={cl.Input}
-          />
+          <EditInput placeholder="Город" className={cl.Input} />
           <EditInput placeholder="Район" vals={Area} className={cl.Input} />
           <EditInput placeholder="Улица" vals={Street} className={cl.Input} />
           <EditInput placeholder="Дом" vals={House} className={cl.Input} />
@@ -80,11 +77,6 @@ function UserDataBody(props) {
           />
         </div>
         <div className={cl.Title}>Прочее:</div>
-        <select className={cl.Selection}>
-          {selection.map((x) => (
-            <option>{x}</option>
-          ))}
-        </select>
         <div className={cl.Title}>Проекты:</div>
         <div className={cl.ProjectList}>
           {Projects[0].map((Project) => (
@@ -115,4 +107,4 @@ function UserDataBody(props) {
   );
 }
 
-export default UserDataBody;
+export default VacancyCreate;
