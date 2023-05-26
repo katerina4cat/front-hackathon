@@ -45,6 +45,7 @@ html[data-theme="light"] {
   --border-info-brick: var(--second-color);
   --profile-icon-background: var(--three-color);
   --profile-icon-color: #fff;
+  --image-edit-text-color: #fff;
 }
 
 html,
@@ -53,4 +54,5 @@ body,
   min-height: 100vh;
   box-sizing: border-box;
   width: 100vw;
+  overflow-x: hidden;
 }

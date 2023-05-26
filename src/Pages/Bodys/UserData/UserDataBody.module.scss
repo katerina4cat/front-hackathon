@@ -4,31 +4,18 @@
   .UserFields {
     text-align: start;
     padding-left: 1.5em;
-    width: 60%;
-    .Title {
-      font-family: var(--second-font);
-      font-size: 2em;
-      margin-top: 1em;
-      @media screen and (max-width: 780px) {
-        font-size: 1.5em;
-      }
-      text-align: left;
-    }
-    .FieldTitle {
-      font-family: var(--three-font);
-      margin-top: 0.5em;
-      font-size: 1.5em;
-      @media screen and (max-width: 780px) {
-        font-size: 1em;
-      }
-      text-align: left;
-    }
-    .Input {
-      width: 60%;
-      margin-top: 0.5em;
-      @media screen and (max-width: 780px) {
-        font-size: 0.7em;
-        width: 85%;
+    width: 90%;
+    .AccountInfo {
+      display: flex;
+      width: 95vw;
+      justify-content: space-between;
+      .ImageChose {
+        margin-right: 1em;
+        margin-top: 1em;
+        user-select: none;
+        @media screen and (max-width: 780px) {
+          height: 15vh;
+        }
       }
     }
     .InlineInputs {
@@ -36,7 +23,7 @@
       display: flex;
       .Input {
         margin-right: 1em;
-        width: calc(20vw - 1.6em);
+        width: calc(19.6vw - 1.6em);
         margin-top: 0.5em;
       }
     }
@@ -45,7 +32,7 @@
       display: flex;
       .Input {
         margin-right: 1em;
-        width: calc(32.8vw - 1.6em);
+        width: calc(32vw - 1.6em);
         margin-top: 0.5em;
       }
     }
@@ -71,7 +58,8 @@
     }
     .ProjectList {
       display: flex;
-      max-width: 100vw;
+      overflow-x: auto;
+      min-height: 25vh;
       .ProjectEdit {
         margin-right: 0.5em;
       }
@@ -79,19 +67,38 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 2em;
-        font-weight: bold;
-        height: 0.75em;
-        width: 0.75em;
-        padding: 0.25em;
+        height: 2em;
+        width: max-content;
         margin-left: 0.5em;
-        text-align: center;
-        border: none;
-        border: 1px solid #000;
-        border-radius: var(--first-border-radius);
-        background-color: var(--second-color);
-        user-select: none;
+        fill: var(--second-color);
       }
     }
+  }
+}
+
+.Title {
+  font-family: var(--second-font);
+  font-size: 2em;
+  margin-top: 1em;
+  @media screen and (max-width: 780px) {
+    font-size: 1.5em;
+  }
+  text-align: left;
+}
+.FieldTitle {
+  font-family: var(--three-font);
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  @media screen and (max-width: 780px) {
+    font-size: 1em;
+  }
+  text-align: left;
+}
+.Input {
+  width: 80%;
+  margin-top: 0.5em;
+  @media screen and (max-width: 780px) {
+    font-size: 0.7em;
+    width: 85%;
   }
 }
