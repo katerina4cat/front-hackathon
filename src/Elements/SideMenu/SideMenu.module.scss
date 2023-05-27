@@ -1,0 +1,34 @@
+.UserSideMenu {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 300%;
+  background-color: rgba($color: #000000, $alpha: 0.35);
+  z-index: 10000;
+  transition-property: left, opacity;
+  transition: ease-in-out 0.15s;
+  .Content {
+    background-color: var(--side-menu-background);
+    width: 35vw;
+    @media screen and (max-width: 780px) {
+      width: 70vw;
+    }
+    padding: 0.5em;
+    padding-right: 0;
+    font-family: var(--second-font);
+    font-size: 1.75em;
+    height: 100%;
+  }
+  .SimpleElement {
+    min-height: 1.25em;
+  }
+  * {
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+  }
+}
+.UserSidemenuHide {
+  left: -50%;
+  opacity: 0;
+  z-index: -1;
+}

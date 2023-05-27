@@ -1,0 +1,62 @@
+.StagesRegister {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  align-self: stretch;
+  .BubleStageField {
+    background-color: var(--bubles-background);
+    width: 30%;
+    height: 100%;
+    padding-left: 0.25em;
+  }
+  .FieldData {
+    margin-left: 1em;
+    width: 100%;
+    .Select {
+      width: 30%;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: var(--first-border-radius);
+    }
+    .Input {
+      width: 40%;
+      height: 2.5em;
+    }
+    .Button {
+      font-size: 1.5em;
+      background-color: var(--first-color);
+      width: 40%;
+      .Content {
+        font-family: var(--first-font);
+      }
+    }
+  }
+}
+.Title {
+  font-family: var(--second-font);
+  font-size: 2em;
+  margin-top: 0.25em;
+  @media screen and (max-width: 780px) {
+    font-size: 1.5em;
+  }
+  text-align: left;
+}
+.FieldTitle {
+  font-family: var(--three-font);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.75em;
+  @media screen and (max-width: 780px) {
+    font-size: 1em;
+  }
+  text-align: left;
+}
+.Input {
+  width: 100%;
+  margin-top: 0.5em;
+  @media screen and (max-width: 780px) {
+    font-size: 0.7em;
+    width: 85%;
+  }
+}

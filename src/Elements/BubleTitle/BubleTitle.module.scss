@@ -1,0 +1,51 @@
+.BubleTitle {
+  margin-top: 1em;
+  min-height: 4em;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  font-family: var(--second-font);
+  position: relative;
+  .Buble {
+    border-radius: 100%;
+    height: 4em;
+    width: 4em;
+    min-width: 4em;
+    background-color: rgba($color: #d03650, $alpha: 0.2);
+    border: 0.25em solid var(--buble-color);
+    @media screen and (max-width: 780px) {
+      font-size: 1em;
+      height: 1em;
+      width: 1em;
+      min-width: 1em;
+      border: 0.15em solid var(--buble-color);
+    }
+    .BubleText {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.75em;
+      width: 100%;
+      text-align: center;
+      @media screen and (max-width: 780px) {
+        font-size: 0.75em;
+      }
+    }
+  }
+  .Title {
+    margin-left: 0.5em;
+    font-size: 1.35em;
+    @media screen and (max-width: 780px) {
+      font-size: 0.75em;
+    }
+    .TitleMidle {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min-content;
+    }
+    .TitleSelected {
+      color: var(--buble-color);
+    }
+  }
+}

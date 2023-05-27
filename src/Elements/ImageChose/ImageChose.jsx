@@ -1,23 +1,26 @@
 import React from "react";
 import cl from "./ImageChose.module.scss";
 import { ReactComponent as PenIcon } from "../../Assets/Icons/pen.svg";
+import { ReactComponent as AddIcon } from "../../Assets/Icons/plus.svg";
 
-function ImageChose({ src, className }) {
+function ImageChose({ src, className, add, addClick }) {
   return (
     <div
       className={[cl.ImageChose, className].join(" ")}
-      onClick={() => src[1](prompt())}
+      onClick={() => {
+        const url = prompt();
+        if (!url) return;
+        add ? addClick(url) : src[1](url);
+      }}
     >
-      <img
-        className={cl.Image}
-        src={
-          src[0] ||
-          "https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-        }
-      ></img>
+      <img className={cl.Image} src={src ? src[0] : undefined}></img>
       <div className={cl.TitleBtn}>
-        <div>Изменить</div>
-        <PenIcon className={cl.TitleIcon} />
+        <div>{add ? "Добавить" : "Изменить"}</div>
+        {add ? (
+          <AddIcon className={cl.TitleIcon} />
+        ) : (
+          <PenIcon className={cl.TitleIcon} />
+        )}
       </div>
     </div>
   );

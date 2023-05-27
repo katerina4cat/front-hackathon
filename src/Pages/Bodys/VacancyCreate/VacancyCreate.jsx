@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import cl from "./VacancyCreate.module.scss";
 import EditInput from "../../../Elements/Input/EditInput";
-import DateInformer from "../../../Elements/DateInformer/DateInformer";
-import ProjectEdit from "../../../Elements/ProjectEdit/ProjectEdit";
 import ImageChose from "../../../Elements/ImageChose/ImageChose";
-import { ReactComponent as PlusIcon } from "../../../Assets/Icons/plus.svg";
 import Select from "../../../Elements/Select/Select";
+import Button from "../../../Elements/Button/Button";
 
 function VacancyCreate(props) {
+  const imageAdd = "";
+  const DirectionOptions = useState([
+    { value: 0, label: "Направление" },
+    { value: 1, label: "Специализация" },
+  ]);
+  const SpecializationOptions = useState([
+    { value: 0, label: "Направлsdение" },
+    { value: 1, label: "Специаsлизация" },
+  ]);
   const Name = useState("");
   const Salary = useState("");
-  const Direction = useState("");
-  const Specialization = useState("");
+  const Direction = useState(DirectionOptions[0][0]);
+  const Specialization = useState(SpecializationOptions[0][1]);
 
+  const City = useState("");
   const Area = useState("");
   const Street = useState("");
   const House = useState("");
@@ -21,21 +29,21 @@ function VacancyCreate(props) {
   const Email = useState("");
   const PostCode = useState("");
 
-  const ImageUrl = useState(
-    "https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-  );
+  const Description = useState("");
+  const Requirements = useState("");
 
-  const Projects = useState([
-    ["Хакатон", "Фронт", "1 место", new Date(2023, 5, 30), Date.now()],
+  const ImagesUrl = useState([
+    {
+      id: 0,
+      url: "https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg",
+    },
   ]);
-
-  const selection = ["Образование", "Стажировка"];
 
   return (
     <div className={cl.UserDataBody}>
       <div className={cl.UserFields}>
         <div className={cl.AccountInfo}>
-          <div>
+          <div style={{ width: "35vw" }}>
             <div className={cl.Title}>Информация:</div>
             <EditInput
               placeholder="Название"
@@ -47,17 +55,59 @@ function VacancyCreate(props) {
               vals={Salary}
               className={cl.Input}
             />
-            <Select values={["Раз", "Два", "nhb"]} />
-            <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
-              Дата регистрации:
-            </div>
-            <DateInformer />
+            <Select
+              options={DirectionOptions[0]}
+              vals={Direction}
+              className={cl.Select}
+            />
+            <Select
+              options={SpecializationOptions[0]}
+              vals={Specialization}
+              className={cl.Select}
+            />
           </div>
-          <ImageChose className={cl.ImageChose} src={ImageUrl} />
+          <div className={cl.PhotoList}>
+            {ImagesUrl[0].map((imageUrl) =>
+              imageUrl ? (
+                <ImageChose
+                  className={cl.ImageChose}
+                  src={[
+                    imageUrl.url,
+                    (url) =>
+                      ImagesUrl[1](
+                        ImagesUrl[0].map((imgEdit) => {
+                          if (imgEdit.id === imageUrl.id) {
+                            imgEdit.url = url;
+                          }
+                          return imgEdit;
+                        })
+                      ),
+                  ]}
+                />
+              ) : undefined
+            )}
+            <ImageChose
+              className={`${cl.ImageChose} ${cl.ImageAdd}`}
+              add={true}
+              addClick={(url) =>
+                ImagesUrl[1]([
+                  ...ImagesUrl[0],
+                  {
+                    id: ImagesUrl[0][ImagesUrl[0].length - 1].id + 1,
+                    url: url,
+                  },
+                ])
+              }
+            />
+          </div>
         </div>
-        <div className={cl.Title}>Адресная информация:</div>
+        <div className={cl.Title}>Контакты:</div>
         <div className={cl.InlineInputs}>
-          <EditInput placeholder="Город" className={cl.Input} />
+          <EditInput
+            placeholder="Адм. округ"
+            vals={City}
+            className={cl.Input}
+          />
           <EditInput placeholder="Район" vals={Area} className={cl.Input} />
           <EditInput placeholder="Улица" vals={Street} className={cl.Input} />
           <EditInput placeholder="Дом" vals={House} className={cl.Input} />
@@ -76,31 +126,21 @@ function VacancyCreate(props) {
             className={cl.Input}
           />
         </div>
-        <div className={cl.Title}>Прочее:</div>
-        <div className={cl.Title}>Проекты:</div>
-        <div className={cl.ProjectList}>
-          {Projects[0].map((Project) => (
-            <ProjectEdit
-              Data={Project}
-              className={cl.ProjectEdit}
-              deleting={() =>
-                Projects[1](Projects[0].filter((x) => x[4] != Project[4]))
-              }
+        <div className={cl.InfoFields}>
+          <div className={`${cl.Title} ${cl.TitleInfo}`}>Информация:</div>
+          <div className={cl.TextAreas}>
+            <textarea
+              placeholder="Описание"
+              value={Description[0]}
+              onChange={(e) => Description[1](e.target.value)}
             />
-          ))}
-          <div
-            style={{ position: "relative", alignSelf: "stretch", width: "3em" }}
-          >
-            <PlusIcon
-              className={cl.PlusEdit}
-              onClick={() =>
-                Projects[1]([
-                  ...Projects[0],
-                  [undefined, undefined, undefined, undefined, Date.now()],
-                ])
-              }
+            <textarea
+              placeholder="Требования"
+              value={Requirements[0]}
+              onChange={(e) => Requirements[1](e.target.value)}
             />
           </div>
+          <Button className={cl.Button}>Добавить вакансию</Button>
         </div>
       </div>
     </div>

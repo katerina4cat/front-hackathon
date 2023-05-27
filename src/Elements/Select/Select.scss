@@ -1,0 +1,28 @@
+.Select {
+  &__control {
+    background-color: transparent !important;
+    font-family: var(--second-font);
+    box-shadow: none !important;
+    border-collapse: separate !important;
+    border: 1px solid var(--border-select-color) !important;
+    border-radius: var(--first-border-radius) !important;
+    min-height: 2em !important;
+  }
+  &__placeholder {
+    text-align: left;
+  }
+  &__single-value {
+    text-align: left;
+  }
+  &__option {
+    font-family: var(--second-font);
+    cursor: pointer !important;
+    text-align: left;
+    &--is-focused {
+      background-color: rgba($color: #000000, $alpha: 0.15) !important;
+    }
+  }
+  &__indicator-separator {
+    display: none !important;
+  }
+}

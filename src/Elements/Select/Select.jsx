@@ -1,16 +1,16 @@
 import React from "react";
-import cl from "./Select.module.scss";
+import "./Select.scss";
+import SelectReact from "react-select";
 
-function Select({ className, values }) {
+function Select({ options, vals, className }) {
   return (
-    <select
-      className={[cl.Select, className].join(" ")}
-      onChange={(e) => console.log(e.target.value)}
-    >
-      {values.map((x) => (
-        <option>{x}</option>
-      ))}
-    </select>
+    <SelectReact
+      options={options}
+      onChange={(e) => vals[1](e)}
+      value={vals[0]}
+      classNamePrefix="Select"
+      className={className}
+    />
   );
 }
 

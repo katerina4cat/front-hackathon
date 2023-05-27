@@ -1,0 +1,31 @@
+.RadioButton {
+  display: inline-block;
+  cursor: pointer;
+  overflow: hidden;
+  width: max-content;
+  .Span {
+    display: flex;
+    align-items: center;
+    border-radius: 99em;
+    transition: 0.25s ease;
+    &::before {
+      display: flex;
+      flex-shrink: 0;
+      content: "";
+      background-color: transparent;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      margin-right: 0.375em;
+      transition: 0.25s ease;
+      box-shadow: inset 0 0 0 0.1em #000;
+    }
+  }
+  .Radio {
+    position: absolute;
+    left: -9999px;
+  }
+  .Radio:checked + .Span::before {
+    box-shadow: inset 0 0 0 0.35em #000;
+  }
+}

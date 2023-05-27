@@ -27,6 +27,7 @@ html {
   --first-color: #2a2639;
   --second-color: #d03650;
   --three-color: #696772;
+  --four-color: #c1c2c7;
   --header-font-color: #fff;
   --header-buttons-color: #fff;
 }
@@ -46,6 +47,11 @@ html[data-theme="light"] {
   --profile-icon-background: var(--three-color);
   --profile-icon-color: #fff;
   --image-edit-text-color: #fff;
+  --border-select-color: var(--three-color);
+  --info-vacancy-background: var(--four-color);
+  --side-menu-background: var(--four-color);
+  --buble-color: var(--second-color);
+  --bubles-background: #e9e9ee;
 }
 
 html,
