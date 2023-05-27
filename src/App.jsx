@@ -8,6 +8,8 @@ import SideMenu from "./Elements/SideMenu/SideMenu";
 import StagesRegister from "./Pages/Bodys/StagesRegister/StagesRegister";
 import LoginBody from "./Pages/Bodys/Login/LoginBody";
 import VacancyList from "./Pages/Bodys/VacancyList/VacancyList";
+import ListVacancy from "./Pages/Bodys/ListVacancy/ListVacancy";
+import UserDataBody from "./Pages/Bodys/UserData/UserDataBody";
 
 function App() {
   document.documentElement.setAttribute("data-theme", "light");
@@ -17,14 +19,24 @@ function App() {
   const [notify, setNotify] = useState(false);
   const [search, setSearch] = useState(false);
   const [sideMenu, setsideMenu] = useState([
-    "Личные данные",
-    "Отмеченные вакансии",
-    "Отмеченные мероприятия",
-    "Активные отклики",
-    "История откликов",
+    <div onClick={() => setPage(<UserDataBody setPage={setPage} />)}>
+      Личные данные
+    </div>,
+    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+      Отмеченные вакансии
+    </div>,
+    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+      Отмеченные мероприятия
+    </div>,
+    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+      Активные отклики
+    </div>,
+    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+      История откликов
+    </div>,
   ]);
 
-  useEffect(() => setPage(<VacancyList setPage={setPage} />), [1]);
+  useEffect(() => setPage(<LoginBody setPage={setPage} />), [1]);
 
   return (
     <div className={style.App}>

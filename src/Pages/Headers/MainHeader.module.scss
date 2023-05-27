@@ -73,6 +73,7 @@
       }
       .AuthButton {
         min-width: 2em;
+        margin-right: 1em;
         div {
           vertical-align: sub;
           height: 100%;
@@ -82,6 +83,10 @@
           }
           font-family: var(--second-font);
           color: var(--header-font-color);
+          svg {
+            height: 1.5em;
+            width: 1.5em;
+          }
         }
       }
     }

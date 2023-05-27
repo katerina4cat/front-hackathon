@@ -1,0 +1,58 @@
+.Border {
+  background: linear-gradient(88.51deg, #ffc774 38.857%, #ef2b00 100%);
+  border-radius: 10000em;
+  max-height: 3.25em;
+  margin-left: 1em;
+  @media screen and (max-width: 780px) {
+    height: 2.5em;
+  }
+  .Search {
+    display: flex;
+    height: 92.5%;
+    background-color: #d9d9d9;
+    border-radius: 10000em;
+    transition: background 0.4s ease-in-out;
+
+    .InputText {
+      text-indent: 0.5em;
+      min-width: 0;
+      flex-grow: 1;
+      display: inline;
+      padding: 0;
+      margin: 0;
+      border: none;
+      height: 100%;
+      background-color: transparent;
+      font-size: 2.25em;
+      &:focus {
+        outline: none;
+      }
+    }
+    &:has(.InputText:invalid) {
+      background-color: rgba($color: #f00, $alpha: 0.4);
+    }
+    .SearchIcon {
+      cursor: pointer;
+      display: inline;
+      height: 2.5em;
+      @media screen and (max-width: 780px) {
+        height: 1.5em;
+      }
+      padding-left: 1em;
+      margin: auto;
+      fill: #000;
+    }
+    .CrossIcon {
+      cursor: pointer;
+      display: inline;
+      height: 2.5em;
+      @media screen and (max-width: 780px) {
+        height: 1.5em;
+      }
+      padding-left: 0.25em;
+      padding-right: 1em;
+      margin: auto;
+      fill: #000;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.Range {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+  width: 100%;
+  margin-top: 0.5em;
+  .sliders_control {
+    position: relative;
+    .fromSlider {
+      height: 0;
+      z-index: 1;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      pointer-events: all;
+      width: 1.5em;
+      height: 3em;
+      background-color: var(--second-color);
+      clip-path: polygon(50% 50%, 100% 25%, 100% 0, 0 0, 0 25%);
+      z-index: 50;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      transform: translateY(-0.125em);
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 0.25em;
+      width: 100%;
+      position: absolute;
+      background-color: var(--first-color);
+      pointer-events: none;
+    }
+  }
+  .form_control {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    font-size: 0.7em;
+    .Text {
+      display: flex;
+      justify-content: center;
+      height: 1.5em;
+      .Info {
+        transform: translateY(10%);
+      }
+      .Number {
+        margin-left: 0.5em;
+        background-color: transparent;
+        width: 100%;
+        height: 1.5em;
+        font-size: 1em;
+        border: none;
+        transition: border 0.5s ease-in;
+        &:focus {
+          outline: none;
+          border-bottom: 3px solid black;
+        }
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        display: none;
+      }
+    }
+  }
+}

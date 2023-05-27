@@ -1,0 +1,38 @@
+.SwitchInput {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+.SwitchLabel {
+  cursor: pointer;
+  text-indent: -9999px;
+  background: white;
+  border: 1px solid black;
+  width: 2em;
+  height: 1em;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+.SwitchLabel:after {
+  content: "";
+  position: absolute;
+  top: 0.05em;
+  left: 0.05em;
+  width: 1em;
+  height: 0.9em;
+  background: var(--second-color);
+  border-radius: 95px;
+  transition: 0.3s;
+}
+.SwitchInput:checked + .SwitchLabel {
+  background: var(--three-color);
+}
+
+.SwitchInput:checked + .SwitchLabel:after {
+  transform: translateX(0.9em);
+}
+
+.SwitchLabel:active:after {
+  width: 50%;
+}

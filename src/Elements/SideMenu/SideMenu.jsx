@@ -13,11 +13,7 @@ function SideMenu({ enabled, setEnabled, childrens }) {
         setEnabled(false);
       }}
     >
-      <div className={cl.Content}>
-        {childrens?.map((x) => (
-          <div className={cl.SimpleElement}>{x}</div>
-        ))}
-      </div>
+      <div className={cl.Content}>{childrens?.map((x) => x)}</div>
     </div>
   );
 }

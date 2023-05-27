@@ -6,10 +6,15 @@ import { ReactComponent as SearchIcon } from "../../Assets/Icons/search.svg";
 import ToRegister from "./HeaderButtons/ToRegister";
 import ToUserData from "./HeaderButtons/ToUserData";
 import ToLogin from "./HeaderButtons/ToLogin";
+import StagesRegister from "../Bodys/StagesRegister/StagesRegister";
+import UserDataBody from "../Bodys/UserData/UserDataBody";
 
 function MainHeader({ setBurger, setNotify, setSearch, setPage, currentPage }) {
   const buttonsLine = [
-    { title: "Главная" },
+    {
+      title: "Главная",
+      func: () => setPage(<StagesRegister setPage={setPage} />),
+    },
     { title: "События" },
     { title: "Новости" },
     { title: "Стажировки" },
@@ -42,7 +47,9 @@ function MainHeader({ setBurger, setNotify, setSearch, setPage, currentPage }) {
             {ButtonAuths[currentPage] ? (
               ButtonAuths[currentPage]
             ) : (
-              <ToUserData setPage={setPage} />
+              <ToUserData
+                onClick={() => setPage(<UserDataBody setPage={setPage} />)}
+              />
             )}
           </div>
         </div>
@@ -60,7 +67,9 @@ function MainHeader({ setBurger, setNotify, setSearch, setPage, currentPage }) {
             <BurgerIcon className={cl.Burger} />
           </div>
           {buttonsLine.map((buttonLine) => (
-            <div className={cl.ButtonLine}>{buttonLine.title}</div>
+            <div className={cl.ButtonLine} onClick={buttonLine.func}>
+              {buttonLine.title}
+            </div>
           ))}
           <div
             className={cl.BellFrame}

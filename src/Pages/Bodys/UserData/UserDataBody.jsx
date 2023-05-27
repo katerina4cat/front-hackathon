@@ -48,7 +48,7 @@ function UserDataBody(props) {
               className={cl.Input}
             />
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
-              Дата регистрации:
+              Год рождения:
             </div>
             <DateInformer />
           </div>

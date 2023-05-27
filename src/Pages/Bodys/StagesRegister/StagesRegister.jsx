@@ -5,6 +5,7 @@ import DateInformer from "../../../Elements/DateInformer/DateInformer";
 import Select from "../../../Elements/Select/Select";
 import EditInput from "../../../Elements/Input/EditInput";
 import Button from "../../../Elements/Button/Button";
+import ListVacancy from "../ListVacancy/ListVacancy";
 
 function StagesRegister({ setPage }) {
   const Stages = [
@@ -35,7 +36,7 @@ function StagesRegister({ setPage }) {
     { value: 3, label: "КТ МТУСИ3" },
   ]);
   const Educate = useState(Educates[0]);
-  const [currStage, setcurrStage] = useState(Stages[1]);
+  const [currStage, setcurrStage] = useState(Stages[0]);
 
   return (
     <div className={cl.StagesRegister}>
@@ -50,10 +51,8 @@ function StagesRegister({ setPage }) {
       </div>
       <div className={cl.FieldData}>
         <div className={cl.Title}>{currStage.Title}</div>
-        {currStage?.value == 1 ? (
+        {currStage?.value === 1 ? (
           <div className={cl.FieldData}>
-            <div className={cl.FieldTitle}>Год рождения</div>
-            <DateInformer />
             <div className={cl.FieldTitle}>Гражданство</div>
             <Select vals={From} options={Froms} className={cl.Select} />
             <div className={cl.FieldTitle}>Образование</div>
@@ -62,7 +61,7 @@ function StagesRegister({ setPage }) {
             <Select vals={Exp} options={Exps} className={cl.Select} />
           </div>
         ) : undefined}
-        {currStage?.value == 2 ? (
+        {currStage?.value === 2 ? (
           <div className={cl.FieldData}>
             <div className={cl.FieldTitle}>
               Пройди подготовкд к стажировке в<br />
@@ -71,7 +70,7 @@ function StagesRegister({ setPage }) {
             <Button className={cl.Button}>Начать</Button>
           </div>
         ) : undefined}
-        {currStage?.value == 3 ? (
+        {currStage?.value === 3 ? (
           <div className={cl.FieldData}>
             <div className={cl.FieldTitle}>
               Пройди несколько тестов перед
@@ -79,6 +78,20 @@ function StagesRegister({ setPage }) {
               началом стажировки
             </div>
             <Button className={cl.Button}>Пройти</Button>
+          </div>
+        ) : undefined}
+        {currStage?.value === 5 ? (
+          <div className={cl.FieldData}>
+            <div className={cl.FieldTitle}>
+              Откликнись на доступные стажировки
+              <br /> по твоим предпочтениям.
+            </div>
+            <Button
+              className={cl.Button}
+              onClick={() => setPage(<ListVacancy setPage={setPage} />)}
+            >
+              Начать
+            </Button>
           </div>
         ) : undefined}
       </div>

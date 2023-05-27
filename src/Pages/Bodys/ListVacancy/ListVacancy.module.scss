@@ -1,0 +1,86 @@
+.ListVacancy {
+  flex-grow: 1;
+  .Modal {
+    min-width: 40vw;
+    font-family: var(--second-font);
+    .Title {
+      font-size: 2.25em;
+      margin: auto;
+      width: max-content;
+      margin-top: -0.5em;
+      margin-bottom: 0.5em;
+    }
+    .SalarySlider {
+      display: flex;
+      font-size: 1.75em;
+      height: min-content;
+      justify-content: space-between;
+    }
+    .ShowRegistered {
+      display: flex;
+      font-size: 1.75em;
+      height: min-content;
+      transform: translateY(25%);
+      .Switch {
+        transform: translateY(-40%);
+        width: 4em;
+        scale: 1.25;
+        margin-left: 2em;
+      }
+    }
+  }
+  .SearchBlock {
+    justify-content: center;
+    height: 3.25em;
+    @media screen and (max-width: 780px) {
+      height: 2.5em;
+    }
+    display: flex;
+    position: relative;
+    margin-top: 1em;
+    .Filter {
+      height: max-content;
+      font-family: var(--second-font);
+      font-size: 1.75em;
+      top: 50%;
+      transform: translateY(-50%);
+      position: relative;
+      user-select: none;
+      @media screen and (max-width: 780px) {
+        font-size: 1em;
+      }
+    }
+    .Search {
+      font-size: 0.5em;
+      width: 50vw;
+    }
+  }
+  .Results {
+    display: flex;
+    margin: 2em;
+    height: 57.5vh;
+    flex-flow: wrap;
+    overflow-y: auto;
+    border-radius: var(--first-border-radius);
+    .ResultBox {
+      width: 26.75vw;
+      height: 20vw;
+      padding: 1em;
+      margin-right: 2.5em;
+      margin-bottom: 1em;
+      border-radius: var(--first-border-radius);
+      background-color: rgba($color: #000000, $alpha: 0.2);
+      font-family: var(--second-font);
+      .Title {
+        font-size: 2em;
+      }
+      .Field {
+        margin-top: 0.5em;
+        font-size: 1.25em;
+      }
+    }
+    .ResultBoxSended {
+      background-color: var(--second-color);
+    }
+  }
+}
