@@ -9,7 +9,6 @@
   background-color: rgba($color: #000000, $alpha: 0.2);
   position: relative;
   user-select: none;
-  cursor: pointer;
   .Calendar {
     position: relative;
     transform: translateY(20%);
@@ -19,6 +18,7 @@
     height: 1.25em;
   }
   .ChoseDateBox {
+    cursor: default;
     z-index: 9;
     user-select: none;
     padding-top: 0.5em;

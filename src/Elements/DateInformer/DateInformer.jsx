@@ -3,7 +3,7 @@ import cl from "./DateInformer.module.scss";
 import { ReactComponent as CalendarIcon } from "../../Assets/Icons/calendar.svg";
 import { formatDate } from "../../common/FormatDate";
 
-function DateInformer({ date, className, disable = false }) {
+function DateInformer({ vals, dateShow, className, disable = false }) {
   function getMonthDates(date) {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -39,14 +39,16 @@ function DateInformer({ date, className, disable = false }) {
     return dates;
   }
   function offsetDate(monthOffset = 0, yearOffset = 0) {
-    setSelectedDate((prev) => {
-      const newDate = new Date(prev);
-      newDate.setMonth(newDate.getMonth() + monthOffset);
-      if (yearOffset !== 0) {
-        newDate.setFullYear(newDate.getFullYear() + yearOffset);
-      }
-      return newDate;
-    });
+    setSelectedDate(
+      (() => {
+        const newDate = new Date(SelectedDate);
+        newDate.setMonth(newDate.getMonth() + monthOffset);
+        if (yearOffset !== 0) {
+          newDate.setFullYear(newDate.getFullYear() + yearOffset);
+        }
+        return newDate;
+      })()
+    );
   }
   const months = [
     "Январь",
@@ -64,11 +66,13 @@ function DateInformer({ date, className, disable = false }) {
   ];
   const daysOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
   const [ChoseDate, setChoseDate] = useState(false);
-  const [SelectedDate, setSelectedDate] = useState(date || new Date());
+  let [SelectedDate, setSelectedDate] = useState(dateShow || new Date());
+  if (vals) [SelectedDate, setSelectedDate] = vals;
   return (
     <div
       className={[cl.DateInformer, className].join(" ")}
       onClick={() => setChoseDate((prev) => !prev)}
+      style={{ cursor: disable ? "default" : "pointer" }}
     >
       {formatDate(SelectedDate)}
       <CalendarIcon className={cl.Calendar} />
@@ -113,15 +117,17 @@ function DateInformer({ date, className, disable = false }) {
                     x < 0 ? cl.ElementOut : undefined,
                   ].join(" ")}
                   onClick={() => {
-                    setSelectedDate(() => {
-                      SelectedDate.setDate(1);
-                      if (x < 0)
-                        SelectedDate.setMonth(
-                          SelectedDate.getMonth() + (i > 2 ? 1 : -1)
-                        );
-                      SelectedDate.setDate(Math.abs(x));
-                      return SelectedDate;
-                    });
+                    setSelectedDate(
+                      (() => {
+                        SelectedDate.setDate(1);
+                        if (x < 0)
+                          SelectedDate.setMonth(
+                            SelectedDate.getMonth() + (i > 2 ? 1 : -1)
+                          );
+                        SelectedDate.setDate(Math.abs(x));
+                        return SelectedDate;
+                      })()
+                    );
                     setChoseDate(false);
                   }}
                 >

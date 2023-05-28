@@ -5,18 +5,18 @@ import EditInput from "../Input/EditInput";
 import { formatDate } from "../../common/FormatDate";
 import { ReactComponent as CrossIcon } from "../../Assets/Icons/cross.svg";
 
-function ProjectEdit({ Data, className, deleting }) {
-  const Name = useState(Data[0] || "");
-  const Class = useState(Data[1] || "");
-  const Result = useState(Data[2] || "");
-  const [Date, setDate] = useState(formatDate(Data[3]) || "07.02.2005");
+function ProjectEdit({ Data, setData, className, deleting }) {
+  const Name = [Data.title, (v) => setData({ ...Data, title: v })];
+  const Class = [Data.class, (v) => setData({ ...Data, class: v })];
+  const Result = [Data.result, (v) => setData({ ...Data, result: v })];
+  const Date = [Data.date, (v) => setData({ ...Data, date: v })];
   return (
     <div className={[cl.ProjectEdit, className].join(" ")}>
       <EditInput placeholder="Навзвание" className={cl.Input} vals={Name} />
       <EditInput placeholder="Роль" className={cl.Input} vals={Class} />
       <EditInput placeholder="Итог" className={cl.Input} vals={Result} />
       <div className={cl.InfoDate}>Дата проведения:</div>
-      <DateInformer Date={Date} className={cl.DateInformer} />
+      <DateInformer vals={Date} className={cl.DateInformer} />
       <CrossIcon className={cl.DeletingButton} onClick={deleting} />
     </div>
   );

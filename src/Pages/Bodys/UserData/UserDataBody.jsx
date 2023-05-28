@@ -25,7 +25,13 @@ function UserDataBody(props) {
   );
 
   const Projects = useState([
-    ["Хакатон", "Фронт", "1 место", new Date(2023, 5, 30), Date.now()],
+    {
+      title: "Хакатон",
+      class: "Фронт",
+      result: "2",
+      date: new Date(),
+      id: Date.now(),
+    },
   ]);
 
   const selection = ["Образование", "Стажировка"];
@@ -92,15 +98,26 @@ function UserDataBody(props) {
         <div className={cl.Title}>Проекты:</div>
         <div className={cl.ProjectVisible}>
           <div className={cl.ProjectList}>
-            {Projects[0].map((Project) => (
-              <ProjectEdit
-                Data={Project}
-                className={cl.ProjectEdit}
-                deleting={() =>
-                  Projects[1](Projects[0].filter((x) => x[4] != Project[4]))
-                }
-              />
-            ))}
+            {Projects[0].map((Project) => {
+              if (!Project) return;
+              return (
+                <ProjectEdit
+                  key={Project.id}
+                  Data={Project}
+                  setData={(v) =>
+                    Projects[1]((prev) =>
+                      prev.map((x) => (x?.id === Project.id ? v : x))
+                    )
+                  }
+                  className={cl.ProjectEdit}
+                  deleting={() => {
+                    Projects[1]((prev) =>
+                      prev.filter((x) => x?.id !== Project.id)
+                    );
+                  }}
+                />
+              );
+            })}
             <div
               style={{
                 position: "relative",
@@ -113,7 +130,13 @@ function UserDataBody(props) {
                 onClick={() =>
                   Projects[1]([
                     ...Projects[0],
-                    [undefined, undefined, undefined, undefined, Date.now()],
+                    {
+                      title: "",
+                      class: "",
+                      result: "",
+                      date: new Date(),
+                      id: Date.now(),
+                    },
                   ])
                 }
               />
