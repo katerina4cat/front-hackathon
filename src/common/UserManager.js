@@ -17,8 +17,6 @@ export class UserManager {
     this.config = {
       headers: {
         Authorization: `Bearer ${token}`,
-        withCredentials: false,
-        origin: "http://127.0.0.1:8080",
       },
     };
   }
