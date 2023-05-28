@@ -1,0 +1,53 @@
+.Notify {
+  z-index: 150;
+  display: flex;
+  position: fixed;
+  overflow: visible;
+  flex-direction: column;
+  justify-content: end;
+  right: 0;
+  bottom: 0;
+  max-height: 40vh;
+  min-height: 40vh;
+  width: 17.5vw;
+  .NotifyElement {
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    max-height: 7.5vh;
+    height: 7.5vh;
+    width: 17.5vw;
+    border-radius: var(--first-border-radius);
+  }
+}
+.NotifyError {
+  display: flex;
+  position: relative;
+  .Icon {
+    fill: var(--second-color);
+    height: 3vh;
+    width: 3vw;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
+  }
+  .Inline {
+    margin-left: 3vw;
+    .Title {
+      font-family: var(--second-font);
+      font-size: 1.5em;
+      @media screen and (max-width: 780px) {
+        font-size: 1.5em;
+      }
+      text-align: left;
+    }
+    .Body {
+      font-family: var(--three-font);
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      font-size: 1em;
+      @media screen and (max-width: 780px) {
+        font-size: 1em;
+      }
+      text-align: left;
+    }
+  }
+}

@@ -5,11 +5,16 @@ import DateInformer from "../../../Elements/DateInformer/DateInformer";
 import ProjectEdit from "../../../Elements/ProjectEdit/ProjectEdit";
 import ImageChose from "../../../Elements/ImageChose/ImageChose";
 import { ReactComponent as PlusIcon } from "../../../Assets/Icons/plus.svg";
+import Button from "../../../Elements/Button/Button";
 
-function UserDataBody(props) {
+function UserDataBody({ setPage, userManager, sendNotify }) {
   const Name = useState("");
   const SurName = useState("");
   const LastName = useState("");
+
+  const From = useState("");
+  const Educate = useState("");
+  const Expi = useState("");
 
   const Country = useState("");
   const Area = useState("");
@@ -26,33 +31,62 @@ function UserDataBody(props) {
 
   const Projects = useState([
     {
-      title: "Хакатон",
-      class: "Фронт",
-      result: "2",
+      title: "",
+      class: "",
+      result: "",
       date: new Date(),
       id: Date.now(),
     },
   ]);
 
-  const selection = ["Образование", "Стажировка"];
+  const sendData = async () => {};
 
   return (
     <div className={cl.UserDataBody}>
       <div className={cl.UserFields}>
         <div className={cl.AccountInfo}>
           <div>
-            <div className={cl.Title}>Личная информация:</div>
-            <EditInput placeholder="Имя" vals={Name} className={cl.Input} />
-            <EditInput
-              placeholder="Фамилия"
-              vals={SurName}
-              className={cl.Input}
-            />
-            <EditInput
-              placeholder="Отчество"
-              vals={LastName}
-              className={cl.Input}
-            />
+            <div className={cl.Title} style={{ textAlign: "center" }}>
+              Личная информация:
+            </div>
+            <div
+              style={{
+                display: "flex",
+                width: "40vw",
+                justifyContent: "space-between",
+              }}
+            >
+              <div>
+                <EditInput placeholder="Имя" vals={Name} className={cl.Input} />
+                <EditInput
+                  placeholder="Фамилия"
+                  vals={SurName}
+                  className={cl.Input}
+                />
+                <EditInput
+                  placeholder="Отчество"
+                  vals={LastName}
+                  className={cl.Input}
+                />
+              </div>
+              <div>
+                <EditInput
+                  placeholder="Гражданство"
+                  vals={From}
+                  className={cl.Input}
+                />
+                <EditInput
+                  placeholder="Образование"
+                  vals={Educate}
+                  className={cl.Input}
+                />
+                <EditInput
+                  placeholder="Опыт работы"
+                  vals={Expi}
+                  className={cl.Input}
+                />
+              </div>
+            </div>
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
               Дата регистрации:
             </div>
@@ -62,7 +96,6 @@ function UserDataBody(props) {
             </div>
             <DateInformer />
           </div>
-          <ImageChose className={cl.ImageChose} src={ImageUrl} />
         </div>
         <div className={cl.Title}>Адресная информация:</div>
         <div className={cl.InlineInputs}>
@@ -89,12 +122,9 @@ function UserDataBody(props) {
             className={cl.Input}
           />
         </div>
-        <div className={cl.Title}>Прочее:</div>
-        <select className={cl.Selection}>
-          {selection.map((x) => (
-            <option>{x}</option>
-          ))}
-        </select>
+        <Button className={cl.ButtonT} onClick={sendData}>
+          Сохранить
+        </Button>
         <div className={cl.Title}>Проекты:</div>
         <div className={cl.ProjectVisible}>
           <div className={cl.ProjectList}>

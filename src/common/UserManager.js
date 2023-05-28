@@ -46,11 +46,11 @@ export class UserManager {
         email: login,
         password: password,
       });
-      if (result.status !== 200) return false;
+      if (result.status !== 200) return result;
       this.setToken(result.data.access);
       this.refreshtoken = result.data.resfresh;
       localStorage.setItem("refreshtoken", result.data.refresh);
-      return true;
+      return result;
     } catch {
       return false;
     }
@@ -58,20 +58,18 @@ export class UserManager {
 
   async sendRequestRegister(email, password, repeatPassword) {
     try {
-      console.log("first");
       const result = await axios.post(`${this.url}/api/v1/users/`, {
         email: email,
         password: password,
         repeatPassword: repeatPassword,
       });
-      console.log("first");
+      console.log(result);
       if (result.status === 201) {
         localStorage.setItem("userID", result.data.pk);
         this.id = result.data.pk;
       }
-      return false;
+      return result;
     } catch {
-      console.log("errrorr");
       return false;
     }
   }

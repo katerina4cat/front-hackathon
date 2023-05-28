@@ -100,10 +100,12 @@
   text-align: left;
 }
 .Input {
-  width: 80%;
   margin-top: 0.5em;
   @media screen and (max-width: 780px) {
     font-size: 0.7em;
     width: 85%;
   }
+}
+.ButtonT {
+  margin-top: 1em;
 }

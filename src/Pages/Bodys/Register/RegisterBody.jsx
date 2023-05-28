@@ -3,8 +3,9 @@ import cl from "./RegisterBody.module.scss";
 import Input from "../../../Elements/Input/Input";
 import Button from "../../../Elements/Button/Button";
 import BannerRigth from "../../../Elements/BannerRigth/BannerRigth";
+import { ErrorNotify } from "../../../Elements/Notify/Notify";
 
-function RegisterBody({ setPage, userManager }) {
+function RegisterBody({ setPage, userManager, sendNotify }) {
   const [Resend, setResend] = useState(0);
   const [Sended, setSended] = useState(false);
   const [Email, setEmail] = useState("");
@@ -21,12 +22,28 @@ function RegisterBody({ setPage, userManager }) {
     if (Resend > 0) return false;
     setResend(45);
     setSended(true);
-    if (
-      !(await userManager.sendRequestRegister(Email, Password, RepPassword))
-    ) {
+    const res = await userManager.sendRequestRegister(
+      Email,
+      Password,
+      RepPassword
+    );
+    if (!res) {
       setResend(0);
       setSended(false);
-      alert("Ошибка отправки запроса!");
+      sendNotify(
+        <ErrorNotify
+          title={"Ошибка API."}
+          body={"Не удалось отправтиь запрос!"}
+        />
+      );
+      return;
+    }
+    if (res.status != 201) {
+      setResend(0);
+      setSended(false);
+      sendNotify(
+        <ErrorNotify title={"Ошибка"} body={"Неподходящий пароль!"} />
+      );
     }
   };
 
@@ -51,9 +68,6 @@ function RegisterBody({ setPage, userManager }) {
         >
           Повторная отправка доступна через: {Resend}
         </div>
-        <Button disabled={Resend > 0} onClick={sendEvent}>
-          Отправить
-        </Button>
         <div className={cl.FieldTitle}>Пароль</div>
         <Input
           placeholder="Придумайте пароль"

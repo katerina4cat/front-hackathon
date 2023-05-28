@@ -16,20 +16,39 @@ function MainHeader({
   setPage,
   currentPage,
   userManager,
+  sendNotify,
 }) {
   const buttonsLine = [
     {
       title: "Главная",
       func: () =>
-        setPage(<StagesRegister setPage={setPage} userManager={userManager} />),
+        setPage(
+          <StagesRegister
+            setPage={setPage}
+            userManager={userManager}
+            sendNotify={sendNotify}
+          />
+        ),
     },
     { title: "События" },
     { title: "Новости" },
     { title: "Стажировки" },
   ];
   const ButtonAuths = {
-    RegisterBody: <ToLogin setPage={setPage} userManager={userManager} />,
-    LoginBody: <ToRegister setPage={setPage} userManager={userManager} />,
+    RegisterBody: (
+      <ToLogin
+        setPage={setPage}
+        userManager={userManager}
+        sendNotify={sendNotify}
+      />
+    ),
+    LoginBody: (
+      <ToRegister
+        setPage={setPage}
+        userManager={userManager}
+        sendNotify={sendNotify}
+      />
+    ),
   };
   return (
     <div className={cl.MainHeader}>
@@ -58,7 +77,11 @@ function MainHeader({
               <ToUserData
                 onClick={() =>
                   setPage(
-                    <UserDataBody setPage={setPage} userManager={userManager} />
+                    <UserDataBody
+                      setPage={setPage}
+                      userManager={userManager}
+                      sendNotify={sendNotify}
+                    />
                   )
                 }
               />
