@@ -48,6 +48,10 @@ function UserDataBody(props) {
               className={cl.Input}
             />
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
+              Дата регистрации:
+            </div>
+            <DateInformer disable={true} />
+            <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
               Год рождения:
             </div>
             <DateInformer />
@@ -86,28 +90,34 @@ function UserDataBody(props) {
           ))}
         </select>
         <div className={cl.Title}>Проекты:</div>
-        <div className={cl.ProjectList}>
-          {Projects[0].map((Project) => (
-            <ProjectEdit
-              Data={Project}
-              className={cl.ProjectEdit}
-              deleting={() =>
-                Projects[1](Projects[0].filter((x) => x[4] != Project[4]))
-              }
-            />
-          ))}
-          <div
-            style={{ position: "relative", alignSelf: "stretch", width: "3em" }}
-          >
-            <PlusIcon
-              className={cl.PlusEdit}
-              onClick={() =>
-                Projects[1]([
-                  ...Projects[0],
-                  [undefined, undefined, undefined, undefined, Date.now()],
-                ])
-              }
-            />
+        <div className={cl.ProjectVisible}>
+          <div className={cl.ProjectList}>
+            {Projects[0].map((Project) => (
+              <ProjectEdit
+                Data={Project}
+                className={cl.ProjectEdit}
+                deleting={() =>
+                  Projects[1](Projects[0].filter((x) => x[4] != Project[4]))
+                }
+              />
+            ))}
+            <div
+              style={{
+                position: "relative",
+                alignSelf: "stretch",
+                width: "3em",
+              }}
+            >
+              <PlusIcon
+                className={cl.PlusEdit}
+                onClick={() =>
+                  Projects[1]([
+                    ...Projects[0],
+                    [undefined, undefined, undefined, undefined, Date.now()],
+                  ])
+                }
+              />
+            </div>
           </div>
         </div>
       </div>

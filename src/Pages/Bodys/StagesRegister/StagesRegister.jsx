@@ -36,7 +36,7 @@ function StagesRegister({ setPage }) {
     { value: 3, label: "КТ МТУСИ3" },
   ]);
   const Educate = useState(Educates[0]);
-  const [currStage, setcurrStage] = useState(Stages[0]);
+  const [currStage, setcurrStage] = useState(Stages[4]);
 
   return (
     <div className={cl.StagesRegister}>

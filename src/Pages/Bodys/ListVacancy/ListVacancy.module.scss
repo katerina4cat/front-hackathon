@@ -58,9 +58,8 @@
   .Results {
     display: flex;
     margin: 2em;
-    height: 57.5vh;
+    width: 100%;
     flex-flow: wrap;
-    overflow-y: auto;
     border-radius: var(--first-border-radius);
     .ResultBox {
       width: 26.75vw;
