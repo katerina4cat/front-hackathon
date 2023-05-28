@@ -1,9 +1,15 @@
 import React from "react";
 import LoginBody from "../../Bodys/Login/LoginBody";
 
-function ToLogin({ setPage }) {
+function ToLogin({ setPage, userManager }) {
   return (
-    <div onClick={() => setPage(<LoginBody setPage={setPage} />)}>Вход</div>
+    <div
+      onClick={() =>
+        setPage(<LoginBody setPage={setPage} userManager={userManager} />)
+      }
+    >
+      Вход
+    </div>
   );
 }
 

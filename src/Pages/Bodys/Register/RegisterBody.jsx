@@ -4,7 +4,7 @@ import Input from "../../../Elements/Input/Input";
 import Button from "../../../Elements/Button/Button";
 import BannerRigth from "../../../Elements/BannerRigth/BannerRigth";
 
-function RegisterBody() {
+function RegisterBody({ setPage, userManager }) {
   const [Resend, setResend] = useState(0);
   const [Sended, setSended] = useState(false);
   const [Email, setEmail] = useState("");
@@ -15,16 +15,21 @@ function RegisterBody() {
     if (Resend > 0) setTimeout(() => setResend((prev) => prev - 1), 1000);
   }, [Resend]);
 
-  const resendEvent = useCallback(() => {
-    if (Resend != 0) return;
+  const sendEvent = async () => {
+    if (Password !== RepPassword) return false;
+    if (!/^.+@.+\.\w+$/.test(Email)) return false;
+    if (Resend > 0) return false;
     setResend(45);
     setSended(true);
-    alert("ResendEmail");
-  }, [Resend]);
-
-  const registerEvent = () => {
-    alert("registerEvent");
+    if (
+      !(await userManager.sendRequestRegister(Email, Password, RepPassword))
+    ) {
+      setResend(0);
+      setSended(false);
+      alert("Ошибка отправки запроса!");
+    }
   };
+
   return (
     <div className={cl.RegisterBody}>
       <div className={cl.UserFields}>
@@ -42,11 +47,11 @@ function RegisterBody() {
         </div>
         <div
           className={cl.ResendTimeout}
-          style={{ display: Resend != 0 ? "block" : "none" }}
+          style={{ display: Resend > 0 ? "block" : "none" }}
         >
           Повторная отправка доступна через: {Resend}
         </div>
-        <Button disabled={Resend > 0} onClick={resendEvent}>
+        <Button disabled={Resend > 0} onClick={sendEvent}>
           Отправить
         </Button>
         <div className={cl.FieldTitle}>Пароль</div>
@@ -63,7 +68,7 @@ function RegisterBody() {
           vals={[RepPassword, setRepPassword]}
           className={cl.InputPass}
         />
-        <Button onClick={registerEvent} style={{ marginBottom: "2em" }}>
+        <Button onClick={sendEvent} style={{ marginBottom: "2em" }}>
           Регистрация
         </Button>
       </div>

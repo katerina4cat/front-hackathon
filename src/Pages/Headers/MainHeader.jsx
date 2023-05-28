@@ -9,19 +9,27 @@ import ToLogin from "./HeaderButtons/ToLogin";
 import StagesRegister from "../Bodys/StagesRegister/StagesRegister";
 import UserDataBody from "../Bodys/UserData/UserDataBody";
 
-function MainHeader({ setBurger, setNotify, setSearch, setPage, currentPage }) {
+function MainHeader({
+  setBurger,
+  setNotify,
+  setSearch,
+  setPage,
+  currentPage,
+  userManager,
+}) {
   const buttonsLine = [
     {
       title: "Главная",
-      func: () => setPage(<StagesRegister setPage={setPage} />),
+      func: () =>
+        setPage(<StagesRegister setPage={setPage} userManager={userManager} />),
     },
     { title: "События" },
     { title: "Новости" },
     { title: "Стажировки" },
   ];
   const ButtonAuths = {
-    RegisterBody: <ToLogin setPage={setPage} />,
-    LoginBody: <ToRegister setPage={setPage} />,
+    RegisterBody: <ToLogin setPage={setPage} userManager={userManager} />,
+    LoginBody: <ToRegister setPage={setPage} userManager={userManager} />,
   };
   return (
     <div className={cl.MainHeader}>
@@ -48,7 +56,11 @@ function MainHeader({ setBurger, setNotify, setSearch, setPage, currentPage }) {
               ButtonAuths[currentPage]
             ) : (
               <ToUserData
-                onClick={() => setPage(<UserDataBody setPage={setPage} />)}
+                onClick={() =>
+                  setPage(
+                    <UserDataBody setPage={setPage} userManager={userManager} />
+                  )
+                }
               />
             )}
           </div>

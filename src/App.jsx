@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import style from "./App.module.scss";
 import RegisterBody from "./Pages/Bodys/Register/RegisterBody";
 import MainHeader from "./Pages/Headers/MainHeader";
@@ -10,33 +10,63 @@ import LoginBody from "./Pages/Bodys/Login/LoginBody";
 import VacancyList from "./Pages/Bodys/VacancyList/VacancyList";
 import ListVacancy from "./Pages/Bodys/ListVacancy/ListVacancy";
 import UserDataBody from "./Pages/Bodys/UserData/UserDataBody";
+import { UserManager } from "./common/UserManager";
 
 function App() {
   document.documentElement.setAttribute("data-theme", "light");
-
+  const userManager = new UserManager();
+  useEffect(async () => {
+    const loaded = await userManager.loadData();
+    if (loaded) {
+      setPage(<StagesRegister setPage={setPage} userManager={userManager} />);
+    }
+  }, []);
   const [СurrentPage, setPage] = useState(undefined);
   const [burger, setBurger] = useState(false);
   const [notify, setNotify] = useState(false);
   const [search, setSearch] = useState(false);
   const [sideMenu, setsideMenu] = useState([
-    <div onClick={() => setPage(<UserDataBody setPage={setPage} />)}>
+    <div
+      onClick={() =>
+        setPage(<UserDataBody setPage={setPage} userManager={userManager} />)
+      }
+    >
       Личные данные
     </div>,
-    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+    <div
+      onClick={() =>
+        setPage(<StagesRegister setPage={setPage} userManager={userManager} />)
+      }
+    >
       Отмеченные вакансии
     </div>,
-    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+    <div
+      onClick={() =>
+        setPage(<StagesRegister setPage={setPage} userManager={userManager} />)
+      }
+    >
       Отмеченные мероприятия
     </div>,
-    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+    <div
+      onClick={() =>
+        setPage(<StagesRegister setPage={setPage} userManager={userManager} />)
+      }
+    >
       Активные отклики
     </div>,
-    <div onClick={() => setPage(<StagesRegister setPage={setPage} />)}>
+    <div
+      onClick={() =>
+        setPage(<StagesRegister setPage={setPage} userManager={userManager} />)
+      }
+    >
       История откликов
     </div>,
   ]);
 
-  useEffect(() => setPage(<LoginBody setPage={setPage} />), [1]);
+  useEffect(
+    () => setPage(<LoginBody setPage={setPage} userManager={userManager} />),
+    [1]
+  );
 
   return (
     <div className={style.App}>
@@ -45,6 +75,7 @@ function App() {
         setNotify={setNotify}
         setSearch={setSearch}
         setPage={setPage}
+        userManager={userManager}
         currentPage={СurrentPage?.type.name}
       />
       <div style={{ flexGrow: 1, position: "relative" }}>
