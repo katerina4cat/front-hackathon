@@ -1,18 +1,11 @@
-export class ApiManager{
+export class ApiManager {
+  constructor() {}
 
-    constructor(){
+  async Login(login, password) {
+    return false;
+  }
 
-
-    }
-
-    async Login(login, password){
-        
-        return false;
-    }
-
-    async CreateAccount(login, password, info){
-
-        return false
-    }
-
+  async CreateAccount(login, password, info) {
+    return false;
+  }
 }
