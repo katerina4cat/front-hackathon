@@ -21,6 +21,21 @@ export class UserManager {
     };
   }
 
+  async setUserData() {
+    try {
+      const result = await axios.get(
+        `${this.url}/api/v1/forms/my_form/`,
+        this.config
+      );
+      if (result.status === 200) {
+        this.useInfo = result.data;
+      }
+      return result;
+    } catch (ex) {
+      return ex.response;
+    }
+  }
+
   async refreshAccess() {
     if (!this.refreshtoken) return;
     try {
@@ -33,6 +48,7 @@ export class UserManager {
       if (result.status === 200) {
         this.setToken(result.data.access);
         localStorage.setItem("refreshtoken", result.data.refresh);
+        await this.setUserData();
       }
       return true;
     } catch {
@@ -50,9 +66,10 @@ export class UserManager {
       this.setToken(result.data.access);
       this.refreshtoken = result.data.resfresh;
       localStorage.setItem("refreshtoken", result.data.refresh);
+      await this.setUserData();
       return result;
-    } catch {
-      return false;
+    } catch (ex) {
+      return ex.response;
     }
   }
 
@@ -67,6 +84,39 @@ export class UserManager {
         localStorage.setItem("userID", result.data.pk);
         this.id = result.data.pk;
       }
+      return result;
+    } catch (ex) {
+      return ex.response;
+    }
+  }
+
+  async sendAnceteInfo(
+    firstName,
+    lastName,
+    patronymic,
+    sex,
+    city,
+    district,
+    dateBirthday,
+    from,
+    phoneNumber,
+    educationalInstitution,
+    works
+  ) {
+    try {
+      const result = await axios.post(`${this.url}/api/v1/forms/`, {
+        firstName: firstName,
+        lastName: lastName,
+        patronymic: patronymic,
+        sex: sex,
+        city: city,
+        district: district,
+        dateBirthday: dateBirthday,
+        citizenship: from,
+        phoneNumber: phoneNumber,
+        education: educationalInstitution,
+        workExperience: works,
+      });
       return result;
     } catch (ex) {
       return ex.response;

@@ -7,6 +7,9 @@ import ImageChose from "../../../Elements/ImageChose/ImageChose";
 import { ReactComponent as PlusIcon } from "../../../Assets/Icons/plus.svg";
 import Button from "../../../Elements/Button/Button";
 import Switch from "../../../Elements/Switch/Switch";
+import { formatApiDate } from "../../../common/FormatDate";
+import { ErrorNotify } from "../../../Elements/Notify/Notify";
+import StagesRegister from "../StagesRegister/StagesRegister";
 
 function UserDataBody({ setPage, userManager, sendNotify }) {
   const Name = useState("");
@@ -26,11 +29,9 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
   const Email = useState("");
   const PostCode = useState("");
 
-  const Sex = useState(false);
+  const birthDate = useState(new Date());
 
-  const ImageUrl = useState(
-    "https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-  );
+  const Sex = useState(false);
 
   const Projects = useState([
     {
@@ -42,7 +43,40 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
     },
   ]);
 
-  const sendData = async () => {};
+  const sendData = async () => {
+    const res = await userManager.sendAnceteInfo(
+      Name[0],
+      SurName[0],
+      LastName[0],
+      Sex[0] ? "Ж" : "М",
+      Country[0],
+      Area[0],
+      formatApiDate(birthDate),
+      From[0],
+      Phone[0],
+      Educate[0],
+      Projects.map((x) => ({
+        companyName: x.title,
+        position: x.class,
+        endDate: x.date,
+        description: x.result,
+      }))
+    );
+    if (res.status === 201) {
+      alert("Анкета успешно отправлена!");
+      setPage(
+        <StagesRegister
+          setPage={setPage}
+          userManager={userManager}
+          sendNotify={sendNotify}
+        />
+      );
+      return;
+    }
+    sendNotify(
+      <ErrorNotify title={"Ошибка"} body={"Возможно заполнены не все поля"} />
+    );
+  };
 
   return (
     <div className={cl.UserDataBody}>
@@ -83,11 +117,6 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
                   vals={Educate}
                   className={cl.Input}
                 />
-                <EditInput
-                  placeholder="Опыт работы"
-                  vals={Expi}
-                  className={cl.Input}
-                />
               </div>
             </div>
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
@@ -107,7 +136,7 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
               Год рождения:
             </div>
-            <DateInformer />
+            <DateInformer vals={birthDate} />
           </div>
         </div>
         <div className={cl.Title}>Адресная информация:</div>
@@ -118,27 +147,12 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
             className={cl.Input}
           />
           <EditInput placeholder="Район" vals={Area} className={cl.Input} />
-          <EditInput placeholder="Улица" vals={Street} className={cl.Input} />
-          <EditInput placeholder="Дом" vals={House} className={cl.Input} />
-          <EditInput
-            placeholder="Строение"
-            vals={BuildsHouse}
-            className={cl.Input}
-          />
         </div>
         <div className={cl.InlineContacts}>
           <EditInput placeholder="Телефон" vals={Phone} className={cl.Input} />
           <EditInput placeholder="Почта" vals={Email} className={cl.Input} />
-          <EditInput
-            placeholder="Посткод"
-            vals={PostCode}
-            className={cl.Input}
-          />
         </div>
-        <Button className={cl.ButtonT} onClick={sendData}>
-          Сохранить
-        </Button>
-        <div className={cl.Title}>Проекты:</div>
+        <div className={cl.Title}>Опыт работы:</div>
         <div className={cl.ProjectVisible}>
           <div className={cl.ProjectList}>
             {Projects[0].map((Project) => {
@@ -186,6 +200,9 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
             </div>
           </div>
         </div>
+        <Button className={cl.ButtonT} onClick={sendData}>
+          Отправить анкету
+        </Button>
       </div>
     </div>
   );

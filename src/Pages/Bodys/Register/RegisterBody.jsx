@@ -20,8 +20,6 @@ function RegisterBody({ setPage, userManager, sendNotify }) {
     if (Password !== RepPassword) return false;
     if (!/^.+@.+\.\w+$/.test(Email)) return false;
     if (Resend > 0) return false;
-    setResend(45);
-    setSended(true);
     const res = await userManager.sendRequestRegister(
       Email,
       Password,
@@ -44,6 +42,7 @@ function RegisterBody({ setPage, userManager, sendNotify }) {
       sendNotify(
         <ErrorNotify title={"Ошибка"} body={"Неподходящий пароль!"} />
       );
+      return;
     }
     if (res.status === 400 && "email" in res.data) {
       setResend(0);
@@ -54,7 +53,16 @@ function RegisterBody({ setPage, userManager, sendNotify }) {
           body={"Данная почта уже зарегистрирована!"}
         />
       );
+      return;
     }
+    if (res.status === 500) {
+      setResend(0);
+      setSended(false);
+      sendNotify(<ErrorNotify title={"Ошибка"} body={"Ошибка сервера!"} />);
+      return;
+    }
+    setResend(45);
+    setSended(true);
   };
 
   return (

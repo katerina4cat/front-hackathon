@@ -47,58 +47,10 @@ function App() {
     >
       Личные данные
     </div>,
-    <div
-      onClick={() =>
-        setPage(
-          <StagesRegister
-            setPage={setPage}
-            userManager={userManager}
-            sendNotify={sendNotify}
-          />
-        )
-      }
-    >
-      Отмеченные вакансии
-    </div>,
-    <div
-      onClick={() =>
-        setPage(
-          <StagesRegister
-            setPage={setPage}
-            userManager={userManager}
-            sendNotify={sendNotify}
-          />
-        )
-      }
-    >
-      Отмеченные мероприятия
-    </div>,
-    <div
-      onClick={() =>
-        setPage(
-          <StagesRegister
-            setPage={setPage}
-            userManager={userManager}
-            sendNotify={sendNotify}
-          />
-        )
-      }
-    >
-      Активные отклики
-    </div>,
-    <div
-      onClick={() =>
-        setPage(
-          <StagesRegister
-            setPage={setPage}
-            userManager={userManager}
-            sendNotify={sendNotify}
-          />
-        )
-      }
-    >
-      История откликов
-    </div>,
+    <div>Отмеченные вакансии</div>,
+    <div>Отмеченные мероприятия</div>,
+    <div>Активные отклики</div>,
+    <div>История откликов</div>,
   ]);
 
   const sendNotify = (chidlren, timeout = 5000) => {

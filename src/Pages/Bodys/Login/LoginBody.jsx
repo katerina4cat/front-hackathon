@@ -5,21 +5,39 @@ import Input from "../../../Elements/Input/Input";
 import Button from "../../../Elements/Button/Button";
 import UserDataBody from "../UserData/UserDataBody";
 
-function LoginBody(props) {
+function LoginBody({ setPage, userManager, sendNotify }) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [ErrorInfo, setErrorInfo] = useState(undefined);
 
-  const authEvent = () => {
-    if (!Email & !Password) setErrorInfo("Вы не указали логин и пароль!");
-    else if (!Email) setErrorInfo("Вы не указали логин!");
-    else if (!Password) setErrorInfo("Вы не указали пароль!");
-    else setErrorInfo(undefined);
-    props.setPage(<UserDataBody setPage={props.setPage} />);
-    alert("Auth");
+  const authEvent = async () => {
+    if (!Email & !Password) {
+      setErrorInfo("Вы не указали логин и пароль!");
+      return;
+    } else if (!Email) {
+      setErrorInfo("Вы не указали логин!");
+      return;
+    } else if (!Password) {
+      setErrorInfo("Вы не указали пароль!");
+      return;
+    }
+    try {
+      const res = await userManager.auth(Email, Password);
+      if (res.status == 200) {
+        setPage(
+          <UserDataBody
+            setPage={setPage}
+            userManager={userManager}
+            sendNotify={sendNotify}
+          />
+        );
+      } else setErrorInfo(res.data.detail);
+    } catch {
+      setErrorInfo("Произошла ошибка связи с сервером!");
+    }
   };
   const restorePassword = () => {
-    alert("restorePassword");
+    alert("Restore password not implemented");
   };
 
   return (
@@ -29,7 +47,7 @@ function LoginBody(props) {
           <div className={cl.Title}>Вход</div>
           <div className={cl.FieldTitle}>Логин</div>
           <Input
-            placeholder="ФИО или почта"
+            placeholder="Почта"
             className={cl.Input}
             vals={[Email, setEmail]}
           />

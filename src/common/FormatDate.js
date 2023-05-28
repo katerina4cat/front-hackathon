@@ -1,4 +1,4 @@
-const formatDate = (date) => {
+export const formatDate = (date) => {
   if (!date) return;
   const year = date.getFullYear().toString().padStart(4, "0");
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -7,4 +7,11 @@ const formatDate = (date) => {
   return `${day}.${month}.${year}`;
 };
 
-export { formatDate };
+export const formatApiDate = (date) => {
+  if (!date) return;
+  const year = date.getFullYear().toString().padStart(4, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
