@@ -63,14 +63,13 @@ export class UserManager {
         password: password,
         repeatPassword: repeatPassword,
       });
-      console.log(result);
       if (result.status === 201) {
         localStorage.setItem("userID", result.data.pk);
         this.id = result.data.pk;
       }
       return result;
-    } catch {
-      return false;
+    } catch (ex) {
+      return ex.response;
     }
   }
 }

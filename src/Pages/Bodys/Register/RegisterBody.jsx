@@ -38,11 +38,21 @@ function RegisterBody({ setPage, userManager, sendNotify }) {
       );
       return;
     }
-    if (res.status != 201) {
+    if (res.status === 400 && "password" in res.data) {
       setResend(0);
       setSended(false);
       sendNotify(
         <ErrorNotify title={"Ошибка"} body={"Неподходящий пароль!"} />
+      );
+    }
+    if (res.status === 400 && "email" in res.data) {
+      setResend(0);
+      setSended(false);
+      sendNotify(
+        <ErrorNotify
+          title={"Ошибка"}
+          body={"Данная почта уже зарегистрирована!"}
+        />
       );
     }
   };

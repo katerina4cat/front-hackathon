@@ -6,6 +6,7 @@ import ProjectEdit from "../../../Elements/ProjectEdit/ProjectEdit";
 import ImageChose from "../../../Elements/ImageChose/ImageChose";
 import { ReactComponent as PlusIcon } from "../../../Assets/Icons/plus.svg";
 import Button from "../../../Elements/Button/Button";
+import Switch from "../../../Elements/Switch/Switch";
 
 function UserDataBody({ setPage, userManager, sendNotify }) {
   const Name = useState("");
@@ -24,6 +25,8 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
   const Phone = useState("");
   const Email = useState("");
   const PostCode = useState("");
+
+  const Sex = useState(false);
 
   const ImageUrl = useState(
     "https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
@@ -88,9 +91,19 @@ function UserDataBody({ setPage, userManager, sendNotify }) {
               </div>
             </div>
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
-              Дата регистрации:
+              Ваш пол:
             </div>
-            <DateInformer disable={true} />
+            <div
+              style={{
+                display: "flex",
+                scale: "1.3",
+                marginLeft: "4em",
+              }}
+            >
+              <div className={cl.SexCenter}>Мужской</div>
+              <Switch vals={Sex} />
+              <div className={cl.SexCenter}>Женский</div>
+            </div>
             <div className={cl.Title} style={{ marginBottom: "0.25em" }}>
               Год рождения:
             </div>

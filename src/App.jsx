@@ -104,12 +104,10 @@ function App() {
   const sendNotify = (chidlren, timeout = 5000) => {
     const id = Date.now();
     NotifyList[1]((prev) => [...prev, { id: id, chidlren: chidlren }]);
-    setTimeout(
-      () => NotifyList[1]((prev) => prev.filter((x) => x.id == id)),
-      timeout
-    );
   };
-
+  useEffect(() => {
+    setTimeout(() => NotifyList[1]([]), 5000);
+  }, [NotifyList[0]]);
   useEffect(
     () =>
       setPage(
